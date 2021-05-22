@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PesquisaCorona</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">NOME DO CIDADÃO</string>
+    <string name="nav_header_subtitle">ver</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">CADASTRO</string>
+
+    <string name="menu_home">Dados</string>
+    <string name="menu_gallery">DICAS</string>
+    <string name="menu_slideshow">SAÚDE</string>
+    <string name="ATUALIZAR">ATUALIZAR</string>
+    <string name="softcod">softcod</string>
+    <string name="nome">PREFEITURA</string>
+    <string name="voltar">VOLTAR</string>
+    <string name="sairUsuarioEdCa">REALMENTE DESEJA SAIR?</string>
+    <string name="ok">SIM</string>
+    <string name="cidadao_nome">NOME</string>
+</resources>
