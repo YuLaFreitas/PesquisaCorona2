@@ -17,7 +17,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
-import com.redeindustrial.mtbf.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,13 +34,13 @@ import java.util.Locale;
 
 public class Utils {
 
-    /**
-     * Checks if email is valid or invalid
-     *
-     * @param email the email to be verified
+    /*
+      Checks if email is valid or invalid
+
+      @param email the email to be verified
      * @return boolean true for valid false for invalid
      */
-    public static boolean isValidEmail(CharSequence email) {
+   /* public static boolean isValidEmail(CharSequence email) {
 
         return true;//email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
 
@@ -203,7 +202,7 @@ public class Utils {
                 contentValues.put(MediaStore.Audio.Media.IS_NOTIFICATION, true);
                 contentValues.put(MediaStore.Audio.Media.IS_RINGTONE, false);
                 contentValues.put(MediaStore.Audio.Media.IS_MUSIC, false);
-*/
+
   //              Uri contentUri = MediaStore.Audio.Media.getContentUriForPath(outAbsPath);
 
                 // If the ringtone already exists in the database, delete it first
@@ -213,13 +212,8 @@ public class Utils {
       //          Uri newUri = context.getContentResolver().insert(contentUri, contentValues);
 
                 // Tell the media scanner about the new ringtone
-          /*      MediaScannerConnection.scanFile(
-                        context,
-        //                new String[]{newUri.toString()},
-                        new String[]{mimeType},
-                        null
-                );
-*/
+
+
        //         Log.d("ConfigActivity", "Copied alarm tone alarme.mp3 to " + outAbsPath);
   ///              Log.d("ConfigActivity", "ID is " + newUri.toString());
             } catch (Exception e) {
@@ -250,7 +244,7 @@ public class Utils {
     }
 
     public static String getLastBitFromUri(final String uri){
-        return uri.replaceFirst(".*/([^/?]+).*", "$1");
+        return uri.replaceFirst(".([^/?]+).*", "$1");
     }
 
     public static String makeTopicString(String firebaseEmail, String firebasePassword) {
@@ -278,6 +272,6 @@ public class Utils {
 
         return context.getString(R.string.app_name);
 
-    }
+    }*/
 
 }

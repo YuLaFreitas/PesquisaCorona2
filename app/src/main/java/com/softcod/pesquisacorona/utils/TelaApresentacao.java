@@ -9,11 +9,9 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
-import com.redeindustrial.mtbf.R;
-import com.redeindustrial.mtbf.controller.MainActivity;
 
 public class TelaApresentacao extends Activity {
-    RelativeLayout telaIncial;
+    /*RelativeLayout telaIncial;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,5 +65,5 @@ public class TelaApresentacao extends Activity {
         iv.setImageResource(res);
         return iv;
     }
-
+*/
 }

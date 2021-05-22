@@ -45,7 +45,7 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_cadastrar);
-
+/*
         telefoneConfEditText =  (EditText) findViewById(R.id.connection_phonedConfEditText);
         nomeConfEditText = (EditText) findViewById(R.id.connection_nameConfEditText);
         emailEditText = (EditText) findViewById(R.id.connection_emailEditText);
@@ -59,7 +59,7 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         passwordConfEditText.setOnKeyListener(getPasswordConfOnKeyListener());
         passwordConfEditText.setTypeface(Typeface.DEFAULT);
 
-        entrarButton = (Button) findViewById(R.id.connection_entrar);
+        entrarButton = (Button) findViewById(R.id.connection_entrar);*/
 
     }
 
@@ -74,8 +74,8 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
                }).show();
     }
 
-    public void entrarButtonOnClick(View v) {
-        String nome = nomeConfEditText.getText().toString();
+    public void salvar(View v) {
+      /*  String nome = nomeConfEditText.getText().toString();
         String telefone = telefoneConfEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String senha =  passwordEditText.getText().toString();
@@ -140,7 +140,7 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
                     getString(R.string.invalidEmailText),
                     Toast.LENGTH_LONG).show();
 
-        }
+        }*/
 
     }
 

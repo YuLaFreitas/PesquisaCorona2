@@ -3,7 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.softcod.pesquisacorona">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +17,7 @@
         android:theme="@style/Theme.PesquisaCorona"
         tools:targetApi="m">
         <activity android:name=".CadastrarUsuarioActivity"/>
-        <activity android:name=".utils.TelaApresentacao"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -29,7 +31,9 @@
 
 
         </activity>
-        
+        <!--meta-data
+            android:name="com.google.firebase.messaging.DisplayNotification"
+            /-->
     </application>
 
 </manifest>

@@ -17,4 +17,9 @@
     <string name="sairUsuarioEdCa">REALMENTE DESEJA SAIR?</string>
     <string name="ok">SIM</string>
     <string name="cidadao_nome">NOME</string>
+    <string name="cidadao_apelido">APELIDO</string>
+    <string name="cidadao_endereco">ENDEREÇO</string>
+    <string name="cidadao_doenca">ENFERMIDADE</string>
+    <string name="cidadao_nascimento">DATA DE NASCIMENTO</string>
+    <string name="salvar">SALVAR</string>
 </resources>

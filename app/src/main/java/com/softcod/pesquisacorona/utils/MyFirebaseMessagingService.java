@@ -17,7 +17,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService{
 
-    private static String TAG = "FirebaseMessaging";
+    /*private static String TAG = "FirebaseMessaging";
     SharedPreferences prefs = null;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -51,14 +51,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
             Log.d(TAG, "onMessageReceived: data valida \n\n\n\n"
                     +data.toString());
 
-            /*MaqNotificationInterrupcao maqNotificationInterrupcao =
+           MaqNotificationInterrupcao maqNotificationInterrupcao =
                     new MaqNotificationInterrupcao();
             maqNotificationInterrupcao.description = data.get("description");
             maqNotificationInterrupcao.id = data.get("id");
             maqNotificationInterrupcao.type = data.get("type");
-            */
 
-            String channelId = getString(R.string.default_notification_channel_id);
+
+           String channelId = getString(R.string.default_notification_channel_id);
             String channelName = getString(R.string.default_notification_channel_name);
 
             NotificationManager notificationManager = (NotificationManager)
@@ -87,12 +87,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
 
 
             notificationManager.notify(createID(), notification);
-            /*
+
             List<MaqNotificationInterrupcao> list = getNotifFromSerialized(
                     prefs.getString(getString(R.string.notificacaoMaquinas), null)
             );
             saveNotifications(list, maqNotificationInterrupcao);
-            */
+
           //  Log.d(TAG, "onMessageReceived: notification saved!");
         }
     }
@@ -156,5 +156,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
             e.printStackTrace();
         }
         //System.out.println("Class FireMsng\n" + json);
-    }
+    }*/
 }
