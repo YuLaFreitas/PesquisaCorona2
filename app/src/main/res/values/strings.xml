@@ -22,4 +22,25 @@
     <string name="cidadao_doenca">ENFERMIDADE</string>
     <string name="cidadao_nascimento">DATA DE NASCIMENTO</string>
     <string name="salvar">SALVAR</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="cadastrese">CADASTRE-SE</string>
+    <string name="esqueceuSenha">ESQUECEU-SE</string>
+    <string name="entrar">ENTRAR</string>
+    <string name="senha">SENHA</string>
+    <string name="prossesando">EM PROCESSO</string>
+    <string name="aguarde">QUEIRA ESPERAR, POR FAVOR</string>
+    <string name="invalidEmailText">EMAIL ERRADO</string>
+    <string name="cancel">CANCELAR</string>
+    <string name="no_permissao">PERMISSÃO NEGADA</string>
+    <string name="sair">SAIR</string>
+    <string name="keyEmail">emailChave</string>
+    <string name="invalidPasswordText">SENHA INVALIDA</string>
 </resources>

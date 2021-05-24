@@ -84,10 +84,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connection_doencaConfEditText" />
 
+    <EditText
+        android:id="@+id/connection_senhaConfEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/senha"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connection_nascimentoConfEditText" />
+    <EditText
+        android:id="@+id/connection_senhaConfEditText2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/senha"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connection_senhaConfEditText" />
+
     <ImageButton
         android:id="@+id/voltarBtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/btnQd"
+        android:layout_height="@dimen/btnQd"
         android:background="@color/purple_500"
         android:contentDescription="@string/voltar"
         android:src="@android:drawable/ic_menu_revert"
@@ -101,16 +128,17 @@
 
     <ImageButton
         android:id="@+id/salvarBtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="160dp"
+        android:layout_width="@dimen/btnQd"
+        android:layout_height="@dimen/btnQd"
+        android:layout_marginEnd="68dp"
         android:background="@color/purple_500"
         android:contentDescription="@string/salvar"
+        android:onClick="salvar"
         android:src="@android:drawable/ic_menu_save"
         android:textSize="15sp"
-        android:onClick="salvar"
         app:layout_constraintBottom_toBottomOf="@+id/voltarBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/voltarBtn" />
+        app:layout_constraintTop_toTopOf="@+id/voltarBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

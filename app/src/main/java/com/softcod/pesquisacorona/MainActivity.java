@@ -28,44 +28,54 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        soliciatLogin();
+    }
 
+    public void soliciatLogin(){
+
+        setContentView(R.layout.activity_login);
+
+       // abrirSecao();
+    }
+
+    public void abrirSecao(View v){
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(
                 new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                    @Override
+                    public void onClick(View view) {
 
-            }
-        });
+                    }
+                });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_gallery,
+                R.id.nav_slideshow, R.id.nav_sair)
                 .setOpenableLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        NavController navController =
+                Navigation.findNavController(this,
+                        R.id.nav_host_fragment_content_main);
+        NavigationUI.setupActionBarWithNavController(this,
+                navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(
+                navigationView, navController);
     }
 
-    public void inserirPaginaCorpo(String url){
-
-    }
-
-    public void inserirRodape() {
-
-
+    public void cadastrar(View v){
+     setContentView(R.layout.activity_cadastrar);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        webView.clearCache(true);
+        //webView.clearCache(true);
 
     }
 

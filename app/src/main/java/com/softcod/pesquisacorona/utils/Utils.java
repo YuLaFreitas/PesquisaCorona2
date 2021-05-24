@@ -1,13 +1,15 @@
 package com.softcod.pesquisacorona.utils;
 
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
+import android.media.MediaScannerConnection;
 import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -26,7 +28,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-//import static com.redeindustrial.mtbf.R.raw.alarme;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+
+import com.softcod.pesquisacorona.R;
 
 /**
  * Created by Igor on 19/01/17.
@@ -34,17 +39,21 @@ import java.util.Locale;
 
 public class Utils {
 
-    /*
-      Checks if email is valid or invalid
-
-      @param email the email to be verified
+    /**
+     * Checks if email is valid or invalid
+     *
+     * @param email the email to be verified
      * @return boolean true for valid false for invalid
      */
-   /* public static boolean isValidEmail(CharSequence email) {
+    public static boolean isValidEmail(CharSequence email) {
 
-        return true;//email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return
+         true;
+        //email != null &&
+        //android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
 
     }
+
     int alarme = 2;
     public static boolean isValidPhone(CharSequence phone) {
 
@@ -52,7 +61,8 @@ public class Utils {
 
     }
 
-    public static void showEditTextDialog(Context context, int dialogTitleId, int dialogMessageId, EditText editText, DialogInterface.OnClickListener onClickListener) {
+    public static void showEditTextDialog(Context context, int dialogTitleId, int dialogMessageId,
+                                          EditText editText, DialogInterface.OnClickListener onClickListener) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
@@ -85,7 +95,9 @@ public class Utils {
 
     }
 
-    public static void showEditTextDialog(Context context, int dialogTitleId, int dialogMessageId, EditText editText, DialogInterface.OnClickListener yesOnClickListener, DialogInterface.OnClickListener noOnClickListener) {
+    public static void showEditTextDialog(Context context, int dialogTitleId, int dialogMessageId,
+                                          EditText editText, DialogInterface.OnClickListener yesOnClickListener,
+                                          DialogInterface.OnClickListener noOnClickListener) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
@@ -114,19 +126,23 @@ public class Utils {
 
     }
 
-    public static void showOkDialog(Context context, int dialogTitleId, int dialogMessageId) {
+    public static void showOkDialog(Context context, int dialogTitleId, int dialogMessageId)
+    {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(dialogTitleId);
         builder.setMessage(dialogMessageId);
         builder.setPositiveButton(R.string.ok, (dialog, which) -> {
-                    dialog.cancel();
+            dialog.cancel();
         });
         builder.show();
 
     }
 
-    public static void showOkCancelDialog(Context context, int dialogTitleId, int dialogMessageId, int buttonTitleId, DialogInterface.OnClickListener onClickListener) {
+    public static void showOkCancelDialog(Context context, int dialogTitleId,
+                                          int dialogMessageId, int buttonTitleId,
+                                          DialogInterface.OnClickListener onClickListener)
+    {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(dialogTitleId);
@@ -137,7 +153,8 @@ public class Utils {
 
     }
 
-    public static String formatDateTime(String dateString, String utc) {
+    public static String formatDateTime(String dateString, String utc)
+    {
         Log.d("UTC",utc);
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
@@ -156,7 +173,8 @@ public class Utils {
 
     }
 
-    public static void log(String message) {
+    public static void log(String message)
+    {
 
         Log.i("log", message);
 
@@ -171,7 +189,7 @@ public class Utils {
             // Make sure the directory exists
             // noinspection ResultOfMethodCallIgnored
             path.mkdirs();
-            //String filename = context.getResources().getResourceEntryName(alarme) + ".mp3";
+            //String filename = context.getResources().getResourceEntryName("alarme") + ".mp3";
             //File outFile = new File(path, filename);
 
             String mimeType = "audio/mpeg";
@@ -181,7 +199,7 @@ public class Utils {
             FileOutputStream outputStream = null;
             try {
                 //inputStream = context.getResources().openRawResource(alarme);
-              //  outputStream = new FileOutputStream(outFile);
+                //  outputStream = new FileOutputStream(outFile);
 
                 // Write in 1024-byte chunks
                 byte[] buffer = new byte[1024];
@@ -193,9 +211,9 @@ public class Utils {
                 }
 
                 // Set the file metadata
-                /*String outAbsPath = outFile.getAbsolutePath();
+                //String outAbsPath = outFile.getAbsolutePath();
                 ContentValues contentValues = new ContentValues();
-                contentValues.put(MediaStore.MediaColumns.DATA, outAbsPath);
+                //contentValues.put(MediaStore.MediaColumns.DATA, outAbsPath);
                 contentValues.put(MediaStore.MediaColumns.TITLE, context.getString(R.string.app_name));
                 contentValues.put(MediaStore.MediaColumns.MIME_TYPE, mimeType);
                 contentValues.put(MediaStore.Audio.Media.IS_ALARM, false);
@@ -203,21 +221,26 @@ public class Utils {
                 contentValues.put(MediaStore.Audio.Media.IS_RINGTONE, false);
                 contentValues.put(MediaStore.Audio.Media.IS_MUSIC, false);
 
-  //              Uri contentUri = MediaStore.Audio.Media.getContentUriForPath(outAbsPath);
+                //Uri contentUri = MediaStore.Audio.Media.getContentUriForPath(outAbsPath);
 
                 // If the ringtone already exists in the database, delete it first
-    //            context.getContentResolver().delete(contentUri, MediaStore.MediaColumns.DATA + "=\"" + outAbsPath + "\"", null);
+                //            context.getContentResolver().delete(contentUri, MediaStore.MediaColumns.DATA + "=\"" + outAbsPath + "\"", null);
 
                 // Add the metadata to the file in the database
-      //          Uri newUri = context.getContentResolver().insert(contentUri, contentValues);
+                //Uri newUri = context.getContentResolver().insert(contentUri, contentValues);
 
                 // Tell the media scanner about the new ringtone
+                /*MediaScannerConnection.scanFile(
+                        context,
+                       new String[]{newUri.toString()},
+                        new String[]{mimeType},
+                        null
+                );*/
 
-
-       //         Log.d("ConfigActivity", "Copied alarm tone alarme.mp3 to " + outAbsPath);
-  ///              Log.d("ConfigActivity", "ID is " + newUri.toString());
+                //         Log.d("ConfigActivity", "Copied alarm tone alarme.mp3 to " + outAbsPath);
+                ///              Log.d("ConfigActivity", "ID is " + newUri.toString());
             } catch (Exception e) {
-     //           Log.e("ConfigActivity", "Error writing " + filename, e);
+                //           Log.e("ConfigActivity", "Error writing " + filename, e);
             } finally {
                 // Close the streams
                 try {
@@ -231,7 +254,7 @@ public class Utils {
             }
         } else {
 
-            Toast.makeText(context, "Permissão não concedida", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.no_permissao, Toast.LENGTH_SHORT).show();
 
         }
 
@@ -244,7 +267,7 @@ public class Utils {
     }
 
     public static String getLastBitFromUri(final String uri){
-        return uri.replaceFirst(".([^/?]+).*", "$1");
+        return uri.replaceFirst(".*/([^/?]+).*", "$1");
     }
 
     public static String makeTopicString(String firebaseEmail, String firebasePassword) {
@@ -272,6 +295,6 @@ public class Utils {
 
         return context.getString(R.string.app_name);
 
-    }*/
+    }
 
 }

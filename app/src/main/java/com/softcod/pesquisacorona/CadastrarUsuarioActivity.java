@@ -3,36 +3,26 @@ package com.softcod.pesquisacorona;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.softcod.pesquisacorona.utils.RetrieveHttp;
-import com.softcod.pesquisacorona.utils.Utils;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.concurrent.ExecutionException;
+import com.softcod.pesquisacorona.controller.ConfigActivity;
 
 public class CadastrarUsuarioActivity extends AppCompatActivity {
 
 
-    private EditText emailEditText;
+    private EditText apelidoEditText;
     private EditText passwordEditText;
     private EditText passwordConfEditText;
-    private EditText telefoneConfEditText;
     private EditText nomeConfEditText;
 
     private ProgressDialog progressDialog;
@@ -45,21 +35,20 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_cadastrar);
-/*
-        telefoneConfEditText =  (EditText) findViewById(R.id.connection_phonedConfEditText);
+
         nomeConfEditText = (EditText) findViewById(R.id.connection_nameConfEditText);
-        emailEditText = (EditText) findViewById(R.id.connection_emailEditText);
+        apelidoEditText = (EditText) findViewById(R.id.connection_apelidoConfEditText);
         passwordEditText = (EditText) findViewById(R.id.connection_passwordEditText);
-        passwordConfEditText = (EditText) findViewById(R.id.connection_passwordConfEditText);
+        passwordConfEditText = (EditText) findViewById(R.id.connection_senhaConfEditText2);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
-        passwordEditText.setOnKeyListener(getPasswordOnKeyListener());
-        passwordEditText.setTypeface(Typeface.DEFAULT);
-        passwordConfEditText.setOnKeyListener(getPasswordConfOnKeyListener());
-        passwordConfEditText.setTypeface(Typeface.DEFAULT);
+        //passwordEditText.setOnKeyListener(getPasswordOnKeyListener());
+       // passwordEditText.setTypeface(Typeface.DEFAULT);
+       // passwordConfEditText.setOnKeyListener(getPasswordConfOnKeyListener());
+        //passwordConfEditText.setTypeface(Typeface.DEFAULT);
 
-        entrarButton = (Button) findViewById(R.id.connection_entrar);*/
+        entrarButton = (Button) findViewById(R.id.connection_entrar);
 
     }
 
@@ -70,37 +59,40 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
                    @Override
                    public void onClick(View view) {
                        startActivity(intent);
+                       //onBackPressed();
                    }
                }).show();
     }
 
     public void salvar(View v) {
-      /*  String nome = nomeConfEditText.getText().toString();
-        String telefone = telefoneConfEditText.getText().toString();
-        String email = emailEditText.getText().toString();
+        String nome = nomeConfEditText.getText().toString();
+        //String telefone = telefoneConfEditText.getText().toString();
+        String apelido = apelidoEditText.getText().toString();
         String senha =  passwordEditText.getText().toString();
-        String senhaConf =  passwordConfEditText.getText().toString();
         int status = 2;
         String message = "";
-
-        if (Utils.isValidEmail(email)) {
+        preferences.edit().putString(ConfigActivity.PREF_EMAIL, apelido).apply();
+        preferences.edit().putString(getString(R.string.keyEmail), apelido).apply();
+        preferences.edit().putString(ConfigActivity.PREF_SENHA, senha).apply();
+        preferences.edit().putString(ConfigActivity.CONT_NOME, nome).apply();
+       /* if (Utils.isValidEmail(apelido)) {
 
             if(senha.equals(senhaConf)){
 
                 progressDialog = new ProgressDialog(this);
-                progressDialog.setTitle(R.string.authenticating);
-                progressDialog.setMessage(getString(R.string.pleaseWait));
+                progressDialog.setTitle(R.string.aguarde);
+                progressDialog.setMessage(getString(R.string.prossesando));
                 progressDialog.setCancelable(true);
                 progressDialog.setIndeterminate(true);
                 progressDialog.show();
 
-                RetrieveHttp http = new RetrieveHttp();
+                /*RetrieveHttp http = new RetrieveHttp();
                 JSONObject json = null;
                 try {
 
                     json = http.execute(getString(R.string.servidor) +
                             "/cadastrar", "POST",
-                            "email="+email+ "&senha="+senha +
+                            "apelido="+apelido+ "&senha="+senha +
                             "&nome="+nome  +"&telefone="+telefone
                     ).get();
                 } catch (ExecutionException | InterruptedException e) {
@@ -109,11 +101,6 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                 }
 
-                preferences.edit().putString(ConfigActivity.PREF_EMAIL, email).apply();
-                preferences.edit().putString(getString(R.string.keyEmail), email).apply();
-                preferences.edit().putString(ConfigActivity.PREF_SENHA, senha).apply();
-                preferences.edit().putString(ConfigActivity.CONT_NOME, nome).apply();
-                preferences.edit().putString(ConfigActivity.PREF_PHONE_NUMBER, telefone).apply();
 
                 try {
                     status = (int) json.get("status");
@@ -131,7 +118,8 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
                     Toast.makeText(this, message, Toast.LENGTH_LONG).show();
                 }
             }else{
-                Toast.makeText(this, "" + getString(R.string.invalidPasswordText), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "" + getString(R.string.invalidPasswordText),
+                        Toast.LENGTH_LONG).show();
             }
 
         } else {
