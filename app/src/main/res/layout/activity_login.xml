@@ -89,8 +89,10 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@+id/connection_apelido"
-            app:layout_constraintTop_toBottomOf="@+id/connection_passwordEditText" />
+            app:layout_constraintTop_toBottomOf="@+id/connection_passwordEditText"
+            app:layout_constraintVertical_bias="0.271" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -110,11 +112,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:background="@android:color/transparent"
             android:onClick="cadastrar"
             android:text="@string/cadastrese"
+            android:background="@color/teal_700"
             android:textColor="@color/white"
             android:textSize="15sp"
+            android:shadowRadius="90"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -125,10 +128,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:background="@android:color/transparent"
+            android:background="@color/teal_200"
+            app:layout_constraintCircleAngle="90"
             android:onClick="nextButtonOnClick"
             android:text="@string/esqueceuSenha"
-            android:textColor="@color/purple_700"
+            android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -32,7 +32,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="cadastrese">CADASTRE-SE</string>
-    <string name="esqueceuSenha">ESQUECEU-SE</string>
+    <string name="esqueceuSenha">RECUPERAR</string>
     <string name="entrar">ENTRAR</string>
     <string name="senha">SENHA</string>
     <string name="prossesando">EM PROCESSO</string>
