@@ -43,4 +43,6 @@
     <string name="sair">SAIR</string>
     <string name="keyEmail">emailChave</string>
     <string name="invalidPasswordText">SENHA INVALIDA</string>
+    <string name="servidor">softcod.com.br/api</string>
+    <string name="informarEmail">INFORME O EMAIL</string>
 </resources>
