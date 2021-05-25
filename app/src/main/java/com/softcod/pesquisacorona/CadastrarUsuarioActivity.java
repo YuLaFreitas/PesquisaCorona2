@@ -41,7 +41,9 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.connection_passwordEditText);
         passwordConfEditText = (EditText) findViewById(R.id.connection_senhaConfEditText2);
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        preferences =
+                PreferenceManager.getDefaultSharedPreferences(
+                        getApplicationContext());
 
         //passwordEditText.setOnKeyListener(getPasswordOnKeyListener());
        // passwordEditText.setTypeface(Typeface.DEFAULT);
