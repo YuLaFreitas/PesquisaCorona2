@@ -68,7 +68,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         if (Utils.isValidEmail(email)) {
 
             progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle(R.string.title_activity_login);
+            progressDialog.setTitle(R.string.ATUALIZAR);
             progressDialog.setMessage(getString(R.string.aguarde));
             progressDialog.setCancelable(true);
             progressDialog.setIndeterminate(true);
@@ -80,9 +80,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 json = http.execute(getString(R.string.servidor)+
                                 "/recuperar_senha",
                         "POST", "email=" + email).get();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
+            } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             } finally {
                 progressDialog.dismiss();

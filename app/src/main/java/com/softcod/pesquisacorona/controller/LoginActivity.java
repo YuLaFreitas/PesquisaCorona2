@@ -63,14 +63,14 @@ public class LoginActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //backButtonOnClick(v);
+                backButtonOnClick(v);
             }
         });
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //nextButtonOnClick(v);
+                nextButtonOnClick(v);
             }
         });
 
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //entrarButtonOnClick(v);
+                entrarButtonOnClick(v);
             }
         });
 
@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
             RetrieveHttp http = new RetrieveHttp();
             JSONObject json = null;
             try {
-                json = http.execute(" http://horimetro.com/apimtfb/apimtfb",
+                json = http.execute(getString(R.string.servidor),
                         "POST", "email="+email+"&senha="+password).get();
             } catch (ExecutionException e) {
                 e.printStackTrace();
