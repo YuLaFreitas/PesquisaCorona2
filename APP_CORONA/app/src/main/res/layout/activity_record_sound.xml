@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_record_sound"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="dismissRecording"
+    tools:context="com.softcod.appCorona.controller.RecordSoundActivity">
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:onClick="recordViewOnCLick">
+
+
+        <RelativeLayout
+            android:layout_width="220dp"
+            android:layout_height="250dp"
+            android:layout_centerInParent="true">
+
+            <RelativeLayout
+                android:id="@+id/recordSound_outterRelativeLayout"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_button"
+                android:layout_centerHorizontal="true">
+
+                <RelativeLayout
+                    android:id="@+id/recordSound_middleRelativeLayout"
+                    android:layout_width="78dp"
+                    android:layout_height="78dp"
+                    android:background="@drawable/rounded_button"
+                    android:layout_centerInParent="true">
+
+                    <RelativeLayout
+                        android:id="@+id/recordSound_innerRelativeLayout"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:layout_centerInParent="true">
+
+                        <Button
+                            android:id="@+id/recordSound_recordButton"
+                            android:layout_width="33dp"
+                            android:layout_height="33dp"
+                            android:text=""
+                            android:background="@drawable/rounded_button"
+                            android:layout_centerInParent="true"
+                            android:onClick="recordButtonOnClick"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/recordSound_listenButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ouvir"
+                android:textColor="@android:color/white"
+                android:background="@android:color/transparent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:onClick="listenButtonOnClick"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salvar"
+                android:textColor="@android:color/white"
+                android:background="@android:color/transparent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:onClick="saveButtonOnClick"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

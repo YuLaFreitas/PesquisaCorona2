@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- https://www.materialpalette.com/pink/purple -->
+    <color name="colorPrimary">#4285f4</color>
+    <color name="colorPrimaryDark">#4255f4</color>
+    <color name="colorPrimaryLight">#4290f4</color>
+    <color name="colorAccent">#0f9d58</color>
+    <color name="coloItemCard">#6799E3</color>
+    <color name="colorSecondaryText">#db6037</color>
+    <color name="colorDivider">#f4b400</color>
+    <color name="colorIconText">#f4b499</color>
+    <color name="white_smoke">#F6F6F6</color>
+    <color name="black">#2C2B1E</color>
+
+</resources>

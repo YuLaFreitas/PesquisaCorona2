@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "184370217746",
+    "project_id": "consultacovid-e138f",
+    "storage_bucket": "consultacovid-e138f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184370217746:android:87ffa89a03603ff98929cb",
+        "android_client_info": {
+          "package_name": "com.softcod.pesquisacorona"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184370217746-g29mtdu7ot55tnjim8fi269440e6p5ho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_GVZntYwEi7Oz5vTJl-6EruYv3-xoIvU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184370217746-g29mtdu7ot55tnjim8fi269440e6p5ho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

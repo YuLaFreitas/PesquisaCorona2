@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/chooseeSound_relativeLayout">
+
+    <RadioGroup
+        android:id="@+id/chooseSound_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp">
+
+        <RadioButton
+            android:id="@+id/chooseSound_defaultSoundRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/defaultSound"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/chooseSound_googleVoiceRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/googleVoice"/>
+
+        <RadioButton
+            android:id="@+id/chooseSound_recordSoundRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/recordSound"/>
+
+        <RadioButton
+            android:id="@+id/chooseSound_devicesSoundsRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/devicesSounds"/>
+
+    </RadioGroup>
+
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_bells"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.softcod.appCorona.controller.MaqActivity"
+    tools:showIn="@layout/activity_notificacao">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/maqs_recyclerView_dois"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/noMaqs_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/noMaqs"
+        android:textColor="@android:color/tertiary_text_dark"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

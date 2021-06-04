@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_filter"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.softcod.appCorona.controller.FilterActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/filter_appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/filter_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/filter_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?listPreferredItemHeightSmall"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_below="@id/filter_appBarLayout"
+        android:foreground="?selectableItemBackground"
+        android:onClick="filterSwitchOnClick">
+
+        <TextView
+            android:id="@+id/filter_filterByPeriodTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filterByPeriod"
+            android:textSize="14sp"
+            android:textColor="@android:color/black" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/filter_switch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="false"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/filter_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider"
+        android:layout_below="@id/filter_linearLayout"/>
+
+    <RelativeLayout
+        android:id="@+id/filter_rangeSlider"
+        android:layout_width="match_parent"
+        android:layout_height="?listPreferredItemHeightLarge"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/filter_divider">
+
+        <io.apptik.widget.MultiSlider
+            android:id="@+id/filter_multiSlider"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:thumbNumber="2"
+            app:stepsThumbsApart="1"
+            app:drawThumbsApart="true" />
+
+        <TextView
+            android:id="@+id/filter_minDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30/04/2017"
+            android:textColor="@android:color/black"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/filter_maxDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30/04/2017"
+            android:textColor="@android:color/black"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDivider"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/filter_bellsListView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/filter_rangeSlider"
+        android:choiceMode="multipleChoice">
+
+    </ListView>
+
+</RelativeLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/connection_relativeLayoutText"
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/connection_connectionTextView"
+            android:layout_width="127dp"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:textSize="40sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/conteinarBtnVoltar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white_smoke"
+        android:minHeight="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/cadastrarButton"
+            android:layout_width="144dp"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="97dp"
+            android:layout_toStartOf="@+id/esqueceuBtn"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="@string/cadastrese"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/esqueceuBtn"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:text="@string/esqueceuSenha"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/connection_contentRelativeLayout"
+        android:layout_width="375dp"
+        android:layout_height="367dp"
+        android:layout_below="@id/connection_relativeLayoutText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="64dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connection_relativeLayoutText">
+
+        <LinearLayout
+            android:id="@+id/connection_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/connection_emailEditText"
+                android:layout_width="@dimen/widthET"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distanciaET"
+                android:autofillHints="10"
+                android:background="@drawable/edittext_design"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimaryLight" />
+
+            <EditText
+                android:id="@+id/connection_passwordEditText"
+                android:layout_width="@dimen/widthET"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distanciaET"
+                android:autofillHints=""
+                android:background="@drawable/edittext_design"
+                android:digits="@string/digitos"
+                android:hint="@string/senha"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimaryLight" />
+
+            <Button
+                android:id="@+id/connection_entrar"
+                android:layout_width="@dimen/widtBtnPrincipal"
+                android:layout_height="@dimen/heightBtnPrincipal"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/colorPrimaryLight"
+                android:enabled="false"
+                android:text="@string/entrar"
+                android:textColor="@color/white_smoke"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/connection_hintImageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/informacao"
+                android:src="@android:drawable/ic_menu_info_details" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/connection_hintImageView"
+                android:text="@string/informacaoLogin"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

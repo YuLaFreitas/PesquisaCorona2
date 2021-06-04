@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:orientation="vertical"
+    android:layout_gravity="center">
+
+    <TextView
+        android:text="@string/sobre_versao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sobre_versao"
+        android:layout_gravity="center"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_sobre_logo"
+        android:id="@+id/sobre_logo"
+        android:contentDescription="@string/sobre_logo"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:text="@string/sobre_todos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:textColor="#333"
+        android:id="@+id/sobre_todos"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="@string/sobre_ri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sobre_ri"
+        android:layout_marginTop="30dp"
+        android:textColor="#333"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:textSize="30sp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:text="@string/sobre_whatsapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sobre_whatsapp"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textAlignment="center"
+        android:textColor="#333"
+        android:textSize="22sp"
+        android:layout_marginTop="11dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:textColor="#333"
+        android:id="@+id/sobre_call"
+        android:text="@string/sobre_call"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textSize="22sp" />
+
+    <TextView
+        android:text="@string/sobre_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sobre_call"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:textColor="#333"
+        android:id="@+id/sobre_link"
+        android:autoLink="web"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/sobre_patente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:textColor="#333"
+        android:text="@string/patent"
+        android:textSize="15sp" />
+
+</LinearLayout>

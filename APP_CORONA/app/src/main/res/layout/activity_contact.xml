@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mask="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/contact_relativeLayoutText"
+        android:layout_width="match_parent"
+        app:layout_heightPercent="40%"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/contact_contactTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/contact"
+            android:textColor="@android:color/white"
+            android:textSize="40sp"
+            android:gravity="bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/contact_relativeLayoutBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:background="@color/white_smoke"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/contact_backButton"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="@string/back"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorSecondaryText"
+            android:background="@android:color/transparent"
+            android:onClick="backButtonOnClick"/>
+
+        <Button
+            android:id="@+id/contact_nextButton"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="@string/next"
+            android:background="@android:color/transparent"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_marginEnd="10dp"
+            android:layout_alignParentEnd="true"
+            android:onClick="nextButtonOnClick"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/contact_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider"
+        android:layout_above="@id/contact_relativeLayoutBottomBar"/>
+
+    <RelativeLayout
+        android:id="@+id/contact_contentRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:layout_below="@id/contact_relativeLayoutText"
+        android:layout_above="@id/contact_divider">
+
+        <LinearLayout
+            android:id="@+id/contact_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/contact_nameEditText"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="Nome"
+                android:textColor="@android:color/background_dark"
+                android:textColorHint="@color/colorDivider"
+                android:inputType="textPersonName"
+                android:background="@drawable/edittext_design"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/contact_emailEditText"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="E-mail"
+                android:textColor="@android:color/background_dark"
+                android:textColorHint="@color/colorDivider"
+                android:background="@drawable/edittext_design"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"/>
+
+            <br.com.sapereaude.maskedEditText.MaskedEditText
+                android:id="@+id/contact_phoneNumberEditText"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="551234567890"
+                android:textColor="@android:color/background_dark"
+                android:textColorHint="@color/colorDivider"
+                android:background="@drawable/edittext_design"
+                android:inputType="phone"
+                android:typeface="monospace"
+                android:imeOptions="actionDone"
+                android:visibility="invisible"
+                mask:allowed_chars="1234567890"
+                mask:mask="+55(##)#####-####"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/contact_hintImageView"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@android:drawable/ic_menu_info_details"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Serão utilizados para eventuais contatos da Rede Industrial"
+                android:textColor="@color/colorDivider"
+                android:layout_centerVertical="true"
+                android:textSize="12sp"
+                android:layout_toEndOf="@id/contact_hintImageView"
+                android:layout_marginEnd="10dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

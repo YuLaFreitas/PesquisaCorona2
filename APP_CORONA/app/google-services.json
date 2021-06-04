@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "90984162735",
+    "project_id": "appcorona-bc16f",
+    "storage_bucket": "appcorona-bc16f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90984162735:android:a835b7742c9b4d6b3c7b5a",
+        "android_client_info": {
+          "package_name": "com.softcod.appCorona"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90984162735-s875eg4f9nkq20to4hedp4vf57okui7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkWSbf6pBhx551KbF03_Zk2uUL7OwwF00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90984162735-s875eg4f9nkq20to4hedp4vf57okui7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Campainha">
+
+        <EditTextPreference
+            android:key="campainha_email"
+            android:title="E-mail da Campainha"
+            android:summary="Conforme configurado no painel web"
+            android:defaultValue=""/>
+
+        <EditTextPreference
+            android:key="campainha_senha"
+            android:title="Senha da Campainha"
+            android:summary="Máximo de 8 caracteres (letras e números apenas), conforme configurada no painel web"
+            android:inputType="textPassword"
+            android:maxLength="8"
+            android:digits="0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+            android:defaultValue="" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Dados para contato">
+        <EditTextPreference
+            android:key="contato_nome"
+            android:title="Nome"
+            android:summary="Será utilizado para eventuais contatos da Rede Industrial"
+            android:defaultValue="" />
+
+        <EditTextPreference
+            android:key="phone_number"
+            android:title="Telefone"
+            android:summary="Será utilizado para eventuais contatos da Rede Industrial"
+            android:inputType="phone"
+            android:defaultValue=""
+            android:digits="1234567890" />
+
+    </PreferenceCategory>
+
+    <!--PreferenceCategory android:title="Notificações">
+
+        <SwitchPreference
+            android:key="campainha_ativada"
+            android:title="Receber Notificações?"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="campainha_vibratoria"
+            android:title="Receber alerta vibratório?"
+            android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="bell_led"
+            android:title="Receber alerta luminoso?"
+            android:defaultValue="true" />
+
+        <RingtonePreference
+            android:key="campainha_ringtone"
+            android:title="Som da Campainha"
+            android:summary="É o som que vai tocar ao apertarem a campainha"
+            android:ringtoneType="alarm" />
+
+    </PreferenceCategory-->
+
+</PreferenceScreen>

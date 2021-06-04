@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/connection_relativeLayoutText"
+        android:layout_width="411dp"
+        android:layout_height="76dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_heightPercent="10%">
+
+        <TextView
+            android:id="@+id/connection_connectionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="bottom"
+            android:text="@string/cadastrese"
+            android:textColor="@color/white_smoke"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:foregroundGravity="center"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connection_relativeLayoutText">
+
+        <LinearLayout
+            android:id="@+id/connection_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/connection_nameConfEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distanciaET"
+                android:autofillHints=""
+                android:background="@drawable/edittext_design"
+                android:hint="@string/nome"
+                android:imeOptions="actionDone"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/colorPrimaryLight" />
+
+            <EditText
+                android:id="@+id/connection_phonedConfEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distanciaET"
+                android:autofillHints=""
+                android:background="@drawable/edittext_design"
+                android:hint="@string/telefone"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="20"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/colorPrimaryLight" />
+
+            <EditText
+                android:id="@+id/connection_emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distanciaET"
+                android:autofillHints=""
+                android:background="@drawable/edittext_design"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/colorPrimaryLight" />
+
+            <EditText
+                android:id="@+id/connection_passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distanciaET"
+                android:autofillHints=""
+                android:background="@drawable/edittext_design"
+                android:digits="@string/digitos"
+                android:hint="@string/senha"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/colorPrimaryLight" />
+
+            <EditText
+                android:id="@+id/connection_passwordConfEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/distanciaET"
+                android:autofillHints=""
+                android:background="@drawable/edittext_design"
+                android:digits="@string/digitos"
+                android:hint="@string/confirmarSenha"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/colorPrimaryLight" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/connection_hintImageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:contentDescription="@string/orientacaoSenha"
+                    android:src="@android:drawable/ic_menu_info_details" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toEndOf="@id/connection_hintImageView"
+                    android:text="@string/orientacaoSenha"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/connection_entrar"
+                android:layout_width="@dimen/widtBtnPrincipal"
+                android:layout_height="@dimen/heightBtnPrincipal"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/colorAccent"
+                android:onClick="entrarButtonOnClick"
+                android:text="@string/cadastrar"
+                android:textColor="@color/white_smoke"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/conteinarBtnVoltar"
+        android:layout_width="109dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/white_smoke"
+        android:contentDescription="@string/back"
+        android:minHeight="50dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.917">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/voltarBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@color/coloItemCard"
+                android:contentDescription="@string/back"
+                android:src="@android:drawable/ic_menu_revert"
+                android:onClick="voltar"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="voltar"
+                android:text="@string/back"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

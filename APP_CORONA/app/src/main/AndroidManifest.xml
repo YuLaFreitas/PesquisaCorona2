@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.softcod.appCorona">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <activity android:name="com.softcod.appCorona.controller.LoginActivity" />
+        <activity android:name="com.softcod.appCorona.controller.ResetPasswordActivity" />
+        <activity android:name="com.softcod.appCorona.controller.EditarUsuarioActivity" />
+        <activity android:name="com.softcod.appCorona.controller.CadastrarUsuarioActivity" />
+        <activity android:name="com.softcod.appCorona.controller.MaqActivity" />
+        <activity android:name="com.softcod.appCorona.controller.CadMACActivity" />
+        <activity
+            android:name="com.softcod.appCorona.controller.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name="com.softcod.appCorona.controller.AboutActivity"
+            android:label="@string/title_activity_sobre"
+            android:theme="@style/AppTheme" />
+        <activity android:name="com.softcod.appCorona.utils.TelaApresentacao">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.softcod.appCorona.controller.MainActivity"
+            android:theme="@style/AppTheme"/>
+
+        <service
+            android:name="com.softcod.appCorona.utils.MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service android:name="com.softcod.appCorona.utils.PlayAudio" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.DisplayNotification"
+            android:resource="@drawable/ic_engrenagem"
+            />
+    </application>
+
+</manifest>
