@@ -1,44 +1,33 @@
 package com.softcod.pesquisacorona;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
-import android.webkit.WebView;
 
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.navigation.NavigationView;
 import com.softcod.pesquisacorona.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    WebView webView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // setContentView(R.layout.activity_main);
 
-        soliciatLogin();
-    }
-
-    public void soliciatLogin(){
-
-        setContentView(R.layout.activity_login);
-
-       // abrirSecao();
-    }
-
-    public void abrirSecao(View v){
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -50,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+        @SuppressLint("ResourceType")
+        DrawerLayout drawer = binding.getRoot().findViewById(R.layout.app_bar_main);
+        NavigationView navigationView = new NavigationView(this);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -68,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 navigationView, navController);
     }
 
-    public void cadastrar(View v){
+   /* public void cadastrar(View v){
      setContentView(R.layout.activity_cadastrar);
-    }
+    }*/
 
     @Override
     protected void onDestroy() {
@@ -101,4 +92,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(cadastro);
 
     }
+
+
+
 }

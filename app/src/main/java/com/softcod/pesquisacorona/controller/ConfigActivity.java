@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.softcod.pesquisacorona.R;
 import com.softcod.pesquisacorona.utils.RetrieveHttp;
 import com.softcod.pesquisacorona.utils.Utils;
 
@@ -24,23 +25,20 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 
-import com.softcod.pesquisacorona.R;
-
 public class ConfigActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final String LOGCAT = "ConfigActivity";
 
 
-    public static String PREF_EMAIL = "campainha_email";
-    public static String PREF_SENHA = "campainha_senha";
-    public static String PREF_RINGTONE = "campainha_ringtone";
-    public static String PREF_ACTIVE = "campainha_ativada";
-    public static String PREF_VIBRAR = "campainha_vibratoria";
-    public static String PREF_LED = "bell_led";
+    public static String PREF_EMAIL = "email_cidadao";
+    public static String PREF_SENHA = "senha_cidadao";
+    public static String PREF_RINGTONE = "_cidadao_ringtone";
+    public static String PREF_ACTIVE = "_cidadao_ativada";
+    public static String PREF_VIBRAR = "_cidadao_vibratoria";
     public static String CONT_EMAIL = "contato_email";
     public static String CONT_NOME = "contato_nome";
-    public static String PREF_PHONE_NUMBER = "phone_number";
-    public static String PREF_EMAIL_OLD = "old_campainha_email";
+    public static String PREF_DOENCA = "DOENCA_CIADAO";
+    public static String PREF_EMAIL_OLD = "old_email";
     public static String PREF_FILTER_BY_PERIOD = "filter_by_period";
     public static String PREF_FILTER_MIN = "filter_min";
     public static String PREF_FILTER_MAX = "filter_max";
@@ -128,12 +126,13 @@ public class ConfigActivity extends PreferenceActivity implements SharedPreferen
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String prefKey) {
         Log.d(LOGCAT, "Mudança na preferencia "+prefKey);
 
-        if(prefKey.equals(PREF_EMAIL) || prefKey.equals(PREF_SENHA) || prefKey.equals(CONT_NOME) || prefKey.equals(PREF_PHONE_NUMBER)) {
+        if(prefKey.equals(PREF_EMAIL) || prefKey.equals(PREF_SENHA) || prefKey.equals(CONT_NOME) ||
+                prefKey.equals(PREF_DOENCA)) {
 
             final String prefMail = sharedPreferences.getString(PREF_EMAIL, "*nao cadastrada*");
             final String prefSenha = sharedPreferences.getString(PREF_SENHA, "*nao cadastrada*");
             final String contNome = sharedPreferences.getString(CONT_NOME, "*nao cadastrada*");
-            final String phoneNumber = sharedPreferences.getString(PREF_PHONE_NUMBER, "*nao cadastrada*");
+            final String phoneNumber = sharedPreferences.getString(PREF_DOENCA, "*nao cadastrada*");
             final String oldEmail = sharedPreferences.getString("email", "");
 
             int status = 2;
@@ -180,7 +179,7 @@ public class ConfigActivity extends PreferenceActivity implements SharedPreferen
                     sharedPreferences.edit().putString(PREF_EMAIL, prefMail).apply();
                     sharedPreferences.edit().putString(PREF_SENHA, prefSenha).apply();
                     sharedPreferences.edit().putString(CONT_NOME, contNome).apply();
-                    sharedPreferences.edit().putString(PREF_PHONE_NUMBER, phoneNumber).apply();
+                    sharedPreferences.edit().putString(PREF_DOENCA, phoneNumber).apply();
                     sharedPreferences.edit().putString("email", prefMail).apply();
                     updateSummaries();
                 } else {
@@ -197,8 +196,8 @@ public class ConfigActivity extends PreferenceActivity implements SharedPreferen
 
                     sharedPreferences.edit().putBoolean(PREF_VIBRAR, false).apply();
                     ((SwitchPreference) configFragment.findPreference(PREF_VIBRAR)).setChecked(false);
-                    sharedPreferences.edit().putBoolean(PREF_LED, false).apply();
-                    ((SwitchPreference) configFragment.findPreference(PREF_LED)).setChecked(false);
+                   // sharedPreferences.edit().putBoolean(PREF_LED, false).apply();
+                    //((SwitchPreference) configFragment.findPreference(PREF_LED)).setChecked(false);
 
                 }
 
@@ -213,7 +212,7 @@ public class ConfigActivity extends PreferenceActivity implements SharedPreferen
 
                 }
 
-            } else if (prefKey.equals(PREF_LED)) {
+            } /*else if (prefKey.equals(PREF_LED)) {
 
                 boolean shouldBlinkLed = sharedPreferences.getBoolean(PREF_LED, true);
 
@@ -224,7 +223,7 @@ public class ConfigActivity extends PreferenceActivity implements SharedPreferen
 
                 }
 
-            } else if (prefKey.equals(PREF_RINGTONE)) {
+            } */else if (prefKey.equals(PREF_RINGTONE)) {
 
                 updateSummaries();
 

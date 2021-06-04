@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
 
     <Toolbar
         android:id="@+id/connection_relativeLayoutText"
@@ -43,14 +44,14 @@
 
 
         <EditText
-            android:id="@+id/connection_apelido"
-            android:layout_width="match_parent"
+            android:id="@+id/connection_email"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="32dp"
             android:hint="@string/cidadao_nome"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            android:padding="10dp"
+            android:layout_margin="@dimen/fab_margin"
             android:textColor="@color/purple_700"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -59,38 +60,33 @@
 
         <EditText
             android:id="@+id/connection_passwordEditText"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:digits="0123456789qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
             android:hint="@string/senha"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:maxLength="8"
-            android:minHeight="48dp"
-            android:padding="10dp"
             android:textColor="@color/purple_700"
             android:textColorHint="@color/purple_200"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/connection_apelido" />
+            app:layout_constraintEnd_toEndOf="@+id/connection_email"
+            app:layout_constraintStart_toStartOf="@+id/connection_email"
+            app:layout_constraintTop_toBottomOf="@+id/connection_email" />
 
         <Button
             android:id="@+id/connection_entrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
             android:background="@color/purple_500"
-            android:onClick="abrirSecao"
             android:text="@string/entrar"
             android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@+id/connection_apelido"
+            app:layout_constraintCircleAngle="25"
+            app:layout_constraintEnd_toEndOf="@+id/connection_passwordEditText"
+            app:layout_constraintStart_toStartOf="@+id/connection_email"
             app:layout_constraintTop_toBottomOf="@+id/connection_passwordEditText"
             app:layout_constraintVertical_bias="0.271" />
 
@@ -108,11 +104,10 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/connection_backButton"
+            android:id="@+id/connection_cadastrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:onClick="cadastrar"
             android:text="@string/cadastrese"
             android:background="@color/teal_700"
             android:textColor="@color/white"
@@ -124,7 +119,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/connection_nextButton"
+            android:id="@+id/connection_renomearButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

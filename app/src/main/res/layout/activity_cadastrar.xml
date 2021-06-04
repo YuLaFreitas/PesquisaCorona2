@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:orientation="vertical"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:context=".CadastrarUsuarioActivity2"
         >
     <EditText
         android:id="@+id/connection_nameConfEditText"
@@ -21,6 +22,7 @@
         android:imeOptions="actionDone"
         android:inputType="textPersonName"
         android:padding="10dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,12 +30,12 @@
 
 
     <EditText
-        android:id="@+id/connection_apelidoConfEditText"
+        android:id="@+id/connection_emailConfEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:layout_marginTop="10dp"
-        android:hint="@string/cidadao_apelido"
+        android:hint="@string/cidadao_email"
         android:imeOptions="actionDone"
         android:inputType="textPersonName"
         android:padding="10dp"
@@ -55,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/connection_apelidoConfEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/connection_emailConfEditText" />
 
     <EditText
         android:id="@+id/connection_doencaConfEditText"
@@ -126,12 +128,12 @@
             android:contentDescription="@string/voltar"
             android:focusable="auto"
             android:focusableInTouchMode="true"
-            android:onClick="voltar"
             android:rotation="27"
             android:rotationX="-19"
             android:rotationY="6"
             android:src="@android:drawable/ic_menu_revert"
             android:tint="#F8F3E7E7"
+            android:onClick="voltar"
             app:fabCustomSize="@dimen/btnQd"
             app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -156,8 +158,8 @@
             android:contentDescription="@string/salvar"
             android:fitsSystemWindows="true"
             android:nestedScrollingEnabled="false"
-            android:onClick="salvar"
             android:requiresFadingEdge="horizontal|vertical"
+            android:onClick="salvar"
             android:rotation="19"
             android:rotationX="-19"
             android:rotationY="1"

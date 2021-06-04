@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthSettings;
+import com.google.firebase.auth.SignInMethodQueryResult;
 
-public class Firebase{
+public class Firebase extends FirebaseAuth{
     private  String senha;
     private  String email;
-    /*public Firebase(FirebaseApp firebaseApp) {
+    public Firebase(FirebaseApp firebaseApp) {
         super(firebaseApp);
-    }*/
+    }
 
     public String getEmail() {
         return email;
@@ -19,7 +22,7 @@ public class Firebase{
     public String getSenha() {
         return senha;
     }
-/*
+
     @NonNull
     @Override
     public Task<SignInMethodQueryResult> fetchSignInMethodsForEmail(@NonNull String s) {
@@ -36,5 +39,5 @@ public class Firebase{
     @Override
     public Task<Void> confirmPasswordReset(@NonNull String s, @NonNull String s1) {
         return super.confirmPasswordReset(s, s1);
-    }*/
+    }
 }

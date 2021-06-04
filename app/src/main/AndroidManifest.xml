@@ -4,6 +4,10 @@
     package="com.softcod.pesquisacorona">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="false"
@@ -15,22 +19,42 @@
         android:theme="@style/Theme.PesquisaCorona"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+
         <activity
-            android:name=".controller.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="true"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".CadastrarUsuarioActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.PesquisaCorona.NoActionBar">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.PesquisaCorona.NoActionBar"/>
+
+        <activity android:name=".controller.ResetPasswordActivity"/>
+        <activity android:name=".controller.ConfigActivity"/>
+        <activity android:name=".utils.TelaApresentacao"/>
+        <activity android:name=".CadastrarUsuarioActivity"/>
+
+        <service
+            android:name=".utils.MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND"
+            >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="com.google.firebase.messaging.DisplayNotification"
+            android:resource="@android:drawable/star_big_off"
+            />
+
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.softcod.pesquisacorona.LoginActivity;
 import com.softcod.pesquisacorona.R;
 import com.softcod.pesquisacorona.utils.RetrieveHttp;
 import com.softcod.pesquisacorona.utils.Utils;

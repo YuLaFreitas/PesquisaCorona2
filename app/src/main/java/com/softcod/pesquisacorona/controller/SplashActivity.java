@@ -1,6 +1,5 @@
 package com.softcod.pesquisacorona.controller;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -8,9 +7,6 @@ import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.softcod.pesquisacorona.utils.Utils;
-
-import java.io.IOException;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -61,8 +57,8 @@ public class SplashActivity extends AppCompatActivity {
 
         }
 
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+       // Intent intent = new Intent(this, MainActivity.class);
+        //startActivity(intent);
         finish();
     }
 }

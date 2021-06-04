@@ -17,7 +17,9 @@ import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-//import com.google.gson.Gson;
+import com.google.gson.Gson;
+import com.softcod.pesquisacorona.MainActivity;
+import com.softcod.pesquisacorona.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService{
 
-    /*private static String TAG = "FirebaseMessaging";
+    private static String TAG = "FirebaseMessaging";
     SharedPreferences prefs = null;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -51,15 +53,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
             Log.d(TAG, "onMessageReceived: data valida \n\n\n\n"
                     +data.toString());
 
-           MaqNotificationInterrupcao maqNotificationInterrupcao =
-                    new MaqNotificationInterrupcao();
-            maqNotificationInterrupcao.description = data.get("description");
-            maqNotificationInterrupcao.id = data.get("id");
-            maqNotificationInterrupcao.type = data.get("type");
+           AlertaFirebase alerta =
+                    new AlertaFirebase();
+            alerta.id = data.get("id");
+            alerta.type = data.get("type");
 
 
-           String channelId = getString(R.string.default_notification_channel_id);
-            String channelName = getString(R.string.default_notification_channel_name);
+           String channelId = getString( R.string.idNotifique);
+            String channelName = getString(R.string.idNotifique);
 
             NotificationManager notificationManager = (NotificationManager)
                     getSystemService(Context.NOTIFICATION_SERVICE);
@@ -69,31 +70,31 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
                 notificationManager.createNotificationChannel(mChannel);
             }
 
-            //Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             PendingIntent pi = PendingIntent
                     .getActivity(this, 0, intent, 0);
 
             Notification notification = new NotificationCompat.Builder(this,
-                    getString(R.string.default_notification_channel_id))
-                    .setSmallIcon(R.drawable.ic_engrenagem)
+                    getString(R.string.idNotifique))
+                    .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
                     .setContentTitle(getString(R.string.app_name))
                     .setContentText(data.get("description"))
                     .setSound(RingtoneManager
                             .getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
-                    .setColor(getColor(R.color.colorPrimaryLight))
+                    .setColor(getColor(R.color.purple_200))
                     .setContentIntent(pi)
                     .build();
 
 
             notificationManager.notify(createID(), notification);
 
-            List<MaqNotificationInterrupcao> list = getNotifFromSerialized(
-                    prefs.getString(getString(R.string.notificacaoMaquinas), null)
+            List<AlertaFirebase> list = getNotifFromSerialized(
+                    prefs.getString(getString(R.string.idNotifique), null)
             );
-            saveNotifications(list, maqNotificationInterrupcao);
+            saveNotifications(list, alerta);
 
-          //  Log.d(TAG, "onMessageReceived: notification saved!");
+            Log.d(TAG, "onMessageReceived: notification saved!");
         }
     }
 
@@ -106,20 +107,20 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
         return id;
     }
 
-    public static List<MaqNotificationInterrupcao>
+    public static List<AlertaFirebase>
     getNotifFromSerialized(String serializedObject){
         if (serializedObject != null) {
-            MaqNotificationInterrupcao[] arr = new Gson().fromJson(
-                    serializedObject, MaqNotificationInterrupcao[].class);
+            AlertaFirebase[] arr = new Gson().fromJson(
+                    serializedObject, AlertaFirebase[].class);
             return Arrays.asList(arr);
         }
         return new ArrayList<>();
     }
 
-    public void saveNotifications(List<MaqNotificationInterrupcao> listNotif,
-                                  MaqNotificationInterrupcao maqNotif){
+    public void saveNotifications(List<AlertaFirebase> listNotif,
+                                  AlertaFirebase maqNotif){
         Gson gson = new Gson();
-        List<MaqNotificationInterrupcao> listNew = new ArrayList<>();
+        List<AlertaFirebase> listNew = new ArrayList<>();
 
         for(int i = 0; i < listNotif.size(); i++){
             listNew.add(listNotif.get(i));
@@ -128,7 +129,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
         listNew.add(maqNotif);
 
         String json = gson.toJson(listNew);
-        prefs.edit().putString(getString(R.string.notificacaoMaquinas),
+        prefs.edit().putString(getString(R.string.idNotifique),
                 json).apply();
     }
 
@@ -156,5 +157,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
             e.printStackTrace();
         }
         //System.out.println("Class FireMsng\n" + json);
-    }*/
+    }
 }

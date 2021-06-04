@@ -16,6 +16,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+/**
+ *
+ */
 public class RetrieveHttp extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(String... strings) {
@@ -24,13 +27,15 @@ public class RetrieveHttp extends AsyncTask<String, Void, JSONObject> {
             URL url = new URL(strings[0]);
             HttpURLConnection client = null;
             String urlParameters = strings[2];
+            Log.d("URL", "AQUI>>>>>>" + strings[0]);
             byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
             client = (HttpURLConnection) url.openConnection();
             client.setRequestMethod(strings[1]);
             client.setRequestProperty("Content-Type",
                     "application/x-www-form-urlencoded");
             client.setDoOutput(true);
-            try (DataOutputStream wr = new DataOutputStream(client.getOutputStream())) {
+            try (DataOutputStream wr =
+                         new DataOutputStream(client.getOutputStream())) {
                 wr.write(postData);
             }
             StringBuilder content;
@@ -47,7 +52,8 @@ public class RetrieveHttp extends AsyncTask<String, Void, JSONObject> {
                 }
                 client.disconnect();
             }
-            Log.e("\n\n\nRetrive\n\n\n", "Json=  \n\n\n" + content.toString() +"\n\n\n");
+            Log.e("\n\n\nRetrive\n\n\n",
+                    "Json=  \n\n\n" + content.toString() +"\n\n\n");
             return new JSONObject(content.toString());
 
         } catch (IOException | JSONException e) {
