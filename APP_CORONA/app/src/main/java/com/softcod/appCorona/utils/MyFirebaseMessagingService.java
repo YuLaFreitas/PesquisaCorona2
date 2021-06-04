@@ -18,7 +18,6 @@ import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
-
 import com.softcod.appCorona.R;
 import com.softcod.appCorona.controller.MainActivity;
 import com.softcod.appCorona.model.MaqNotificationInterrupcao;

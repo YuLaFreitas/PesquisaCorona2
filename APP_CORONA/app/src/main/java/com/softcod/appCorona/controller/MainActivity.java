@@ -1,5 +1,7 @@
 package com.softcod.appCorona.controller;
 
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -41,15 +43,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.iid.FirebaseInstanceIdReceiver;
 import com.softcod.appCorona.R;
 import com.softcod.appCorona.model.MaqNotificationInterrupcao;
 import com.softcod.appCorona.utils.Mensagens;
 import com.softcod.appCorona.utils.MyFirebaseMessagingService;
 import com.softcod.appCorona.utils.RetrieveHttp;
 import com.softcod.appCorona.utils.Utils;
-import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,8 +60,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
-
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
