@@ -4,7 +4,6 @@ import static android.bluetooth.BluetoothGattCharacteristic.PERMISSION_WRITE;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -12,9 +11,9 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,11 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.softcod.pesquisacorona.controller.ConfigActivity;
 import com.softcod.pesquisacorona.controller.ResetPasswordActivity;
 import com.softcod.pesquisacorona.utils.RetrieveHttp;
@@ -54,14 +49,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       /* getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         passwordEditText = (EditText) findViewById(R.id.connection_passwordEditText);
-
-
 
         cadastro = (Button) findViewById(R.id.connection_cadastrar);
         renomear = (Button) findViewById(R.id.connection_renomearButton);
@@ -71,13 +64,11 @@ public class LoginActivity extends AppCompatActivity {
 
         passwordEditText.setOnKeyListener(getPasswordOnKeyListener());
         passwordEditText.setTypeface(Typeface.DEFAULT);
-        Intent chamarCadastro = new Intent(this, CadastrarUsuarioActivity.class);
+
+       Intent chamarCadastro = new Intent(this, CadastrarUsuarioActivity.class);
        cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(chamarCadastro);
-
-            }
+            public void onClick(View v) {startActivity(chamarCadastro);}
         });
 
         entrarButton.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 senha = passwordEditText.getText().toString();
                 email = emailEditText.getText().toString();
-
                 acessando();
             }
         });
@@ -130,12 +120,15 @@ public class LoginActivity extends AppCompatActivity {
             RetrieveHttp http = new RetrieveHttp();
             JSONObject json = null;
             try {
-                json = http.execute(getString(R.string.servidor) + "/conferir.php",
-                        "POST", "email="+email+"&senha="+password).get();
+                json = http.execute(getString(R.string.servidor) + "/?",
+                        "POST", "tabela=cidadao"
+                                +"&acao=verificar"
+                                +"&email="+email+
+                                "&senha="+password
+
+                ).get();
                 Log.d("JSON____", String.valueOf(json));
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
+            } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             } finally {
                 progressDialog.dismiss();
@@ -188,7 +181,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void entrar() {
+   /* public void entrar() {
 
         final Context ct = this;
         Log.d("entrar","teste");
@@ -210,24 +203,24 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }
+    }*/
 
-    public void mensagem(String msng, Context c){
+   /* public void mensagem(String msng, Context c){
         Toast t = Toast.makeText(c, msng, Toast.LENGTH_LONG);
         t.getVerticalMargin();
         t.setMargin(300,100);
         t.setGravity(Gravity.HORIZONTAL_GRAVITY_MASK, 10, 10);
         t.show();
-    }
+    }*/
 
 
-    public void configurarBotaoLogin(){
-      /*  if (senhaEt.getText().length() > 0 && emailEt.getText().length() > 0) {
+   /* public void configurarBotaoLogin(){
+        if (senhaEt.getText().length() > 0 && emailEt.getText().length() > 0) {
             senha = senhaEt.getText().toString();
             email = emailEt.getText().toString();
             abrirSecao();
-        }else {mensagem(getString(R.string.erroLogin),this);}*/
-    }
+        }else {mensagem(getString(R.string.erroLogin),this);}
+    }*/
   /*  @Override
     public void onStart(){
         super.onStart();
@@ -239,7 +232,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }*/
 
-    private void updateUI(FirebaseUser user) {
+    /*private void updateUI(FirebaseUser user) {
 
             if(user != null){
                 mensagem("OI " + user.getEmail(),this);
@@ -249,6 +242,6 @@ public class LoginActivity extends AppCompatActivity {
             else{
                 mensagem(
                         "Informe seu E-Mail e Senha...", this);
-            }}
+            }}*/
 
 }

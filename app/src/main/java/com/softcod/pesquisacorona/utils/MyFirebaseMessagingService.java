@@ -82,7 +82,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
                     .setSound(RingtoneManager
                             .getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
-                    .setColor(getColor(R.color.purple_200))
+                    .setColor(getColor(R.color.azul_200))
                     .setContentIntent(pi)
                     .build();
 

@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.softcod.pesquisacorona.R;
 import com.softcod.pesquisacorona.databinding.FragmentGalleryBinding;
 
-public class GalleryFragment extends Fragment {
+public class InformeFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
     private FragmentGalleryBinding binding;

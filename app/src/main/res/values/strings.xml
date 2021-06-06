@@ -7,9 +7,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">CADASTRO</string>
 
-    <string name="menu_home">Dados</string>
-    <string name="menu_gallery">DICAS</string>
-    <string name="menu_slideshow">SAÚDE</string>
+    <string name="menu_home">ESTATÍSTICAS</string>
+    <string name="menu_infor">RECOMENDAÇÕES</string>
+    <string name="menu_ssude">SINTOMAS</string>
     <string name="ATUALIZAR">ATUALIZAR</string>
     <string name="softcod">softcod</string>
     <string name="nome">PREFEITURA</string>
@@ -50,4 +50,8 @@
     <string name="cidadao_email">EMAIL</string>
     <string name="authenticating">Verificando os dados</string>
     <string name="pleaseWait">Um momento</string>
+    <string name="bairro">BAIRRO</string>
+    <string name="cidade">CIDADE</string>
+    <string name="rua">RUA</string>
+    <string name="num">NUMERO</string>
 </resources>

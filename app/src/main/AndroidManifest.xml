@@ -6,8 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="false"
@@ -15,15 +13,18 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:theme="@style/Theme.PesquisaCorona"
+        android:supportsRtl="false"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
+        tools:targetApi="m"
+        >
 
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.PesquisaCorona"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,17 +35,20 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.PesquisaCorona.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+
 
         <activity android:name=".controller.ResetPasswordActivity"/>
         <activity android:name=".controller.ConfigActivity"/>
         <activity android:name=".utils.TelaApresentacao"/>
         <activity android:name=".CadastrarUsuarioActivity"/>
 
+
+
         <service
             android:name=".utils.MyFirebaseMessagingService"
             android:permission="com.google.android.c2dm.permission.SEND"
-            >
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />

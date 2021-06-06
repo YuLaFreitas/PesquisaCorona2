@@ -160,9 +160,7 @@ public class ConfigActivity extends PreferenceActivity implements SharedPreferen
                                     "&email_old="+oldEmail
                     ).get();
 
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
+                } catch (ExecutionException | InterruptedException e) {
                     e.printStackTrace();
                 } finally {
                     progressDialog.dismiss();
@@ -180,7 +178,7 @@ public class ConfigActivity extends PreferenceActivity implements SharedPreferen
                     sharedPreferences.edit().putString(PREF_SENHA, prefSenha).apply();
                     sharedPreferences.edit().putString(CONT_NOME, contNome).apply();
                     sharedPreferences.edit().putString(PREF_DOENCA, phoneNumber).apply();
-                    sharedPreferences.edit().putString("email", prefMail).apply();
+                    sharedPreferences.edit().putString(getString(R.string.keyEmail), prefMail).apply();
                     updateSummaries();
                 } else {
                     Toast.makeText(this, message, Toast.LENGTH_LONG).show();

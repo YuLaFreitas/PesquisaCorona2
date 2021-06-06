@@ -16,22 +16,17 @@
             android:id="@+id/nav_pesquisa"
             android:icon="@drawable/ic_sintomas"
             android:title="@string/menu_ssude" />
-
-
     </group>
-
-
     <group
-        android:checkableBehavior="single"
-        android:orderInCategory="100"
+        android:orderInCategory="10"
         android:menuCategory="system"
         android:id="@+id/sistema">
     <item
+            android:iconTint="@color/design_default_color_error"
             android:orderInCategory="@integer/google_play_services_version"
             android:menuCategory="system"
             android:id="@+id/sair"
             android:icon="@android:drawable/ic_lock_power_off"
-            android:title="@string/sair"
-        tools:targetApi="o" />
+            android:title="@string/sair" />
     </group>
 </menu>

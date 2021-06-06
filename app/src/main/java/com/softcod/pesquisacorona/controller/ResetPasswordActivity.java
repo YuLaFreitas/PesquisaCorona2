@@ -102,4 +102,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         }
 
     }
+
+    public void recuperarSenhaButtonOnClick(View view) {
+    }
 }

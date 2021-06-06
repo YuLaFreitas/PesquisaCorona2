@@ -3,6 +3,7 @@ package com.softcod.pesquisacorona;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
@@ -28,10 +29,15 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
 
 
     private EditText emailEditText;
+    private EditText apelidoConfEditText;
     private EditText nascimentoEditText;
     private EditText passwordEditText;
     private EditText passwordConfEditText;
-    private EditText enderecoConfEditText;
+    private EditText numConfEditText;
+    private EditText ruaConfEditText;
+    private EditText bairroConfEditText;
+    private EditText cidadeConfEditText;
+
     private EditText doencaConfEditText;
     private EditText nomeConfEditText;
 
@@ -47,19 +53,25 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar);
 
         nomeConfEditText = (EditText) findViewById(R.id.connection_nameConfEditText);
+        apelidoConfEditText = (EditText) findViewById(R.id.connection_apelidoConfEditText);
         doencaConfEditText =  (EditText) findViewById(R.id.connection_doencaConfEditText);
         emailEditText = (EditText) findViewById(R.id.connection_emailConfEditText);
-        enderecoConfEditText = (EditText) findViewById(R.id.connection_enderecoConfEditText);
+
+        cidadeConfEditText = (EditText) findViewById(R.id.connection_cidadeConfEditText);
+        bairroConfEditText = (EditText) findViewById(R.id.connection_bairroConfEditText);
+        ruaConfEditText = (EditText) findViewById(R.id.connection_ruaConfEditText);
+        numConfEditText = (EditText) findViewById(R.id.connection_numConfEditText);
+
         nascimentoEditText = (EditText) findViewById(R.id.connection_nascimentoConfEditText);
         passwordEditText = (EditText) findViewById(R.id.connection_senhaConfEditText);
         passwordConfEditText = (EditText) findViewById(R.id.connection_senhaConfEditText2);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         //causa erro not null
-        /*passwordEditText.setOnKeyListener(getPasswordOnKeyListener());
+        passwordEditText.setOnKeyListener(getPasswordOnKeyListener());
         passwordEditText.setTypeface(Typeface.DEFAULT);
         passwordConfEditText.setOnKeyListener(getPasswordConfOnKeyListener());
-        passwordConfEditText.setTypeface(Typeface.DEFAULT);*/
+        passwordConfEditText.setTypeface(Typeface.DEFAULT);
 
        // entrarButton = (Button) findViewById(R.id.connection_entrar);
 
@@ -78,9 +90,14 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
 
     public void salvar(View v) {
         String nome = nomeConfEditText.getText().toString();
+        String apelido = apelidoConfEditText.getText().toString();
         String doenca = doencaConfEditText.getText().toString();
         String email = emailEditText.getText().toString();
-        String endereco = enderecoConfEditText.getText().toString();
+
+        String bairro = bairroConfEditText.getText().toString();
+        String cidade = cidadeConfEditText.getText().toString();
+        String logradoura = ruaConfEditText.getText().toString();
+        String numero = numConfEditText.getText().toString();
         String senha =  passwordEditText.getText().toString();
         String senhaConf = passwordConfEditText.getText().toString();
         String nascimento = nascimentoEditText.getText().toString();
@@ -104,13 +121,19 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         RetrieveHttp http = new RetrieveHttp();
                     json = http.execute(
                             getString(R.string.servidor) + "/?",
-                            "POST",
-                            "email="+email+
-                            "&endereco=" + endereco +
-                            "&nascimento" + nascimento +
-                            "&senha="+senha +
-                            "&nome="+nome+
-                            "&doenca="+doenca
+                                    "POST",
+                                    "acao=inserir"+
+                                    "&tabela=cidadao"+
+                                    "&nome="+nome+
+                                    "&apelido="+apelido+
+                                    "&email="+email+
+                                    "&senha="+senha +
+                                    "&bairro=" + bairro +
+                                    "&cidade=" + cidade +
+                                    "&logradura=" + logradoura +
+                                    "&numero=" + numero +
+                                    "&nascimento=" + nascimento +
+                                    "&doenca="+doenca
                     ).get();
                     status = (int) json.get("status");
                     message = (String) json.get("mensagem");

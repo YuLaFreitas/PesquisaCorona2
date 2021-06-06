@@ -22,7 +22,7 @@ import com.softcod.pesquisacorona.databinding.FragmentSlideshowBinding;
 import java.io.File;
 import java.io.IOException;
 
-public class SlideshowFragment extends Fragment {
+public class PesquisaFragment extends Fragment {
 
     private SlideshowViewModel slideshowViewModel;
     private FragmentSlideshowBinding binding;

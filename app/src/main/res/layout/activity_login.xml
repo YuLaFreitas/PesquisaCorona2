@@ -10,13 +10,12 @@
 
     <Toolbar
         android:id="@+id/connection_relativeLayoutText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:layout_width="0dp"
+        android:layout_height="147dp"
+        android:background="@color/azul_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/connection_connectionTextView"
@@ -34,8 +33,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/connection_contentRelativeLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="420dp"
+        android:layout_height="534dp"
         android:background="@android:color/white"
         app:layout_constraintBottom_toTopOf="@+id/connection_relativeLayoutBottomBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,12 +46,13 @@
             android:id="@+id/connection_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
             android:layout_marginTop="32dp"
             android:hint="@string/cidadao_nome"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            android:layout_margin="@dimen/fab_margin"
-            android:textColor="@color/purple_700"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -67,8 +67,8 @@
             android:hint="@string/senha"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_200"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/connection_email"
             app:layout_constraintStart_toStartOf="@+id/connection_email"
             app:layout_constraintTop_toBottomOf="@+id/connection_email" />
@@ -79,7 +79,7 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
-            android:background="@color/purple_500"
+            android:background="@color/azul_500"
             android:text="@string/entrar"
             android:textColor="@color/white"
             android:textSize="15sp"

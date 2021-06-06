@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.slideshow.SlideshowFragment">
+    tools:context=".ui.slideshow.PesquisaFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/corpo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margen"
-        app:layout_constraintBottom_toTopOf="@+id/rodape"
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,32 +23,31 @@
             android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/rodape"
-        android:layout_width="361dp"
-        android:layout_height="38dp"
-        android:layout_margin="@dimen/margen"
-        android:layout_marginBottom="28dp"
-        app:cardBackgroundColor="#673AB7"
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="@dimen/btnQd"
+        android:layout_height="@dimen/btnQd"
+        android:layout_gravity="start"
+        android:adjustViewBounds="true"
+        android:background="@color/white"
+        android:backgroundTint="@color/azul_200"
+        android:contentDescription="@string/voltar"
+        android:focusable="auto"
+        android:focusableInTouchMode="true"
+        android:onClick="voltar"
+        android:rotation="1"
+        android:rotationX="1"
+        android:rotationY="6"
+        android:src="@android:drawable/ic_menu_send"
+        android:tint="@color/white"
+        android:translationZ="10dp"
+        app:backgroundTintMode="src_in"
+        app:borderWidth="10dp"
+        app:fabCustomSize="@dimen/btnQd"
+        app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/empresa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/softcod"
-                android:textColor="@color/white" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
