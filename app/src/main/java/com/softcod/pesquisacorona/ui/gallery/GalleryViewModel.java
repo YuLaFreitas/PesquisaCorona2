@@ -10,7 +10,10 @@ public class GalleryViewModel extends ViewModel {
 
     public GalleryViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("http://www.saude.ba.gov.br/temasdesaude/coronavirus/dicas-de-protecao-covid-19/");
+        mText.setValue( "http://portal.saude.pe.gov.br/noticias/secretaria-executiva-de-vigilancia-em-saude/imunizacao-contra-covid-19-documentos-e-tira"
+        );
+        //  Resources.getSystem().getResourceTypeName(R.string.urlWebExterno)
+
     }
 
     public LiveData<String> getText() {

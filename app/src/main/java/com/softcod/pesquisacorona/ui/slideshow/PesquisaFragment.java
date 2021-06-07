@@ -7,16 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.softcod.pesquisacorona.MainActivity;
-import com.softcod.pesquisacorona.R;
 import com.softcod.pesquisacorona.databinding.FragmentSlideshowBinding;
 
 import java.io.File;
@@ -52,6 +48,8 @@ public class PesquisaFragment extends Fragment {
         web.getTouchscreenBlocksFocus();
 
         web.setKeepScreenOn(true);
+
+        web.addJavascriptInterface(new ControleWeb(this.getContext()), "Sintoma");
          /*
         webView.getKeepScreenOn();
 

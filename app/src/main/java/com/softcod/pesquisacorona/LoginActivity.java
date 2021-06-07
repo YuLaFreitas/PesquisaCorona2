@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.softcod.pesquisacorona.controller.ConfigActivity;
 import com.softcod.pesquisacorona.controller.ResetPasswordActivity;
@@ -214,13 +215,15 @@ public class LoginActivity extends AppCompatActivity {
     }*/
 
 
-   /* public void configurarBotaoLogin(){
-        if (senhaEt.getText().length() > 0 && emailEt.getText().length() > 0) {
-            senha = senhaEt.getText().toString();
-            email = emailEt.getText().toString();
-            abrirSecao();
-        }else {mensagem(getString(R.string.erroLogin),this);}
-    }*/
+    public void configurarBotaoLogin() {
+        if (passwordEditText.getText().length() > 0 && emailEditText.getText().length() > 0) {
+            senha = passwordEditText.getText().toString();
+            email = emailEditText.getText().toString();
+            acessando();
+        } else {
+            Snackbar.make(this.getCurrentFocus(), Snackbar.LENGTH_LONG, Integer.parseInt(getString(R.string.erroLogin))).show();
+            }
+    }
   /*  @Override
     public void onStart(){
         super.onStart();

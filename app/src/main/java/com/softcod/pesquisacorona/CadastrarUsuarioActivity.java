@@ -43,7 +43,6 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
     private SharedPreferences preferences;
-   // private Button entrarButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +72,6 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         passwordConfEditText.setOnKeyListener(getPasswordConfOnKeyListener());
         passwordConfEditText.setTypeface(Typeface.DEFAULT);
 
-       // entrarButton = (Button) findViewById(R.id.connection_entrar);
 
     }
 

@@ -74,8 +74,4 @@ public class MainActivity extends AppCompatActivity {
          Intent cadastro = new Intent(this, CadastrarUsuarioActivity.class);
             startActivity(cadastro);
         }
-
-
-    /*public void sair(MenuItem item) {
-    }*/
 }
