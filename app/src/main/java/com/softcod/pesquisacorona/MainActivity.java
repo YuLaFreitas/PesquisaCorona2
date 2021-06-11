@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.softcod.pesquisacorona.controller.ConfigActivity;
 import com.softcod.pesquisacorona.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,19 +53,20 @@ public class MainActivity extends AppCompatActivity {
                 this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(
                 navigationView, navController);
-
-        //TextView textView = findViewById(R.id.cidadao);
-        //textView.setText(preferences.getString(getString(R.string.cidadao_nome), ""));
-
     }
 
 
         @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
 
-        return true;
+            // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+            TextView textView = findViewById(R.id.cidadao);
+            textView.setText(preferences.getString(
+                    ConfigActivity.CONT_NOME, ""));
+
+
+            return true;
     }
 
     @Override
