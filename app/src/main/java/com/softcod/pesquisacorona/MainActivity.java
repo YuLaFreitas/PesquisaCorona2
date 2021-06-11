@@ -1,7 +1,9 @@
 package com.softcod.pesquisacorona;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-
+    SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
+        preferences = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
 
         DrawerLayout drawer = binding.drawerLayout;
 
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(
                 navigationView, navController);
 
+        //TextView textView = findViewById(R.id.cidadao);
+        //textView.setText(preferences.getString(getString(R.string.cidadao_nome), ""));
 
     }
 
@@ -70,8 +76,16 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+
     public void cadastrar(MenuItem item) {
-         Intent cadastro = new Intent(this, CadastrarUsuarioActivity.class);
+         Intent cadastro = new Intent(this,
+                 CadastrarUsuarioActivity.class);
             startActivity(cadastro);
         }
+
+   public void sair(MenuItem item){
+        Intent home = new Intent(this, LoginActivity.class);
+        startActivity(home);
+   }
+
 }

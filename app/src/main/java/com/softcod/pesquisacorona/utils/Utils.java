@@ -1,13 +1,13 @@
 package com.softcod.pesquisacorona.utils;
 
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+
 import android.Manifest;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
-import android.media.MediaScannerConnection;
 import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
+import com.softcod.pesquisacorona.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,10 +29,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-
-import com.softcod.pesquisacorona.R;
 
 /**
  * Created by Igor on 19/01/17.
@@ -48,9 +45,8 @@ public class Utils {
     public static boolean isValidEmail(CharSequence email) {
 
         return
-         true;
-        //email != null &&
-        //android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+         email != null &&
+        android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
 
     }
 

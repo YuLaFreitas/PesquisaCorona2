@@ -4,6 +4,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/CloudDiskClient" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/PHP-Server-Monitor-API" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/REST-Api-with-Slim-PHP" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/android" vcs="Git" />
   </component>
 </project>

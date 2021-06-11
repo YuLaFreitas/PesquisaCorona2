@@ -30,7 +30,7 @@ public class ConfigActivity extends PreferenceActivity implements SharedPreferen
     private static final String LOGCAT = "ConfigActivity";
 
 
-    public static String PREF_EMAIL = "email_cidadao";
+    public static String PREF_EMAIL = "email_chave";
     public static String PREF_SENHA = "senha_cidadao";
     public static String PREF_RINGTONE = "_cidadao_ringtone";
     public static String PREF_ACTIVE = "_cidadao_ativada";

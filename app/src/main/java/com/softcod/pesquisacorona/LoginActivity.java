@@ -3,6 +3,7 @@ package com.softcod.pesquisacorona;
 import static android.bluetooth.BluetoothGattCharacteristic.PERMISSION_WRITE;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button entrarButton;
     private FirebaseAuth mAuth;
     String senha, email;
+    String id_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,17 +56,32 @@ public class LoginActivity extends AppCompatActivity {
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        passwordEditText = (EditText) findViewById(R.id.connection_passwordEditText);
+        preferences = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
 
-        cadastro = (Button) findViewById(R.id.connection_cadastrar);
-        renomear = (Button) findViewById(R.id.connection_renomearButton);
+        passwordEditText = (EditText) findViewById(
+                R.id.connection_passwordEditText);
 
-        entrarButton = (Button) findViewById(R.id.connection_entrar);
-        emailEditText = (EditText) findViewById(R.id.connection_email);
+        cadastro = (Button) findViewById(
+                R.id.connection_cadastrar);
+        renomear = (Button) findViewById(
+                R.id.connection_renomearButton);
+
+        entrarButton = (Button) findViewById(
+                R.id.connection_entrar);
+        emailEditText = (EditText) findViewById(
+                R.id.connection_email);
 
         passwordEditText.setOnKeyListener(getPasswordOnKeyListener());
         passwordEditText.setTypeface(Typeface.DEFAULT);
+
+        if(!preferences.getString(ConfigActivity.PREF_SENHA, "").isEmpty() &&
+        !preferences.getString(getString(R.string.keyEmail), "").isEmpty()
+        ){
+          passwordEditText.setText(preferences.getString(ConfigActivity.PREF_SENHA, ""));
+          emailEditText.setText(preferences.getString(getString(R.string.keyEmail), ""));
+         acessando();
+        }
 
        Intent chamarCadastro = new Intent(this, CadastrarUsuarioActivity.class);
        cadastro.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("CommitPrefEdits")
     public void acessando() {
 
         String email = emailEditText.getText().toString();
@@ -128,6 +146,7 @@ public class LoginActivity extends AppCompatActivity {
                                 "&senha="+password
 
                 ).get();
+
                 Log.d("JSON____", String.valueOf(json));
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
@@ -135,16 +154,18 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
             }
 
-            preferences.edit().putString(ConfigActivity.PREF_EMAIL, email).apply();
-            preferences.edit().putString(getString(R.string.keyEmail), email).apply();
-            preferences.edit().putString(ConfigActivity.PREF_SENHA, password).apply();
-
             try {
                 status = (int) json.get("status");
                 message = (String) json.get("mensagem");
+                id_user = json.getString("id");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            preferences.edit().putString(getString(R.string.keyIdUsuario), id_user).apply();
+            preferences.edit().putString(ConfigActivity.PREF_EMAIL, email).apply();
+            preferences.edit().putString(getString(R.string.keyEmail), email).apply();
+            preferences.edit().putString(ConfigActivity.PREF_SENHA, password).apply();
 
             if(status == 1){
                 preferences.edit().putBoolean("nlogado", false).apply();

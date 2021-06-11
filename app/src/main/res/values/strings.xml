@@ -58,4 +58,11 @@
     <string name="sintoma">keySintoma</string>
     <string name="nivel">nivelKey</string>
     <string name="urlWebExterno">http://portal.saude.pe.gov.br/noticias/secretaria-executiva-de-vigilancia-em-saude/imunizacao-contra-covid-19-documentos-e-tira</string>
+    <string name="enviar">ENVIAR</string>
+    <string name="keyIdUsuario">id_usuario</string>
+    <string name="keyDoenca">doencaKey</string>
+    <string name="keyApelido">apelidoKey</string>
+    <string name="keyBairro">bairroKey</string>
+    <string name="keyNumero">numeroKey</string>
+    <string name="keyNasimento">nascimentoKey</string>
 </resources>

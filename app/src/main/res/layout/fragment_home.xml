@@ -7,17 +7,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layoutDescription="@xml/fragment_home_scene">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/lista"/>
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutDescription="@xml/fragment_home_scene"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <TextView
+                android:id="@+id/lista"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/black"
+                android:gravity="center_horizontal"
+                android:scrollbars="vertical"
+                android:textColor="@color/teal_700"
+                android:textSize="@dimen/texInf"
+                />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

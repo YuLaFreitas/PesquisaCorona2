@@ -65,8 +65,10 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.connection_senhaConfEditText);
         passwordConfEditText = (EditText) findViewById(R.id.connection_senhaConfEditText2);
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        //causa erro not null
+        preferences = PreferenceManager
+                .getDefaultSharedPreferences(
+                getApplicationContext());
+
         passwordEditText.setOnKeyListener(getPasswordOnKeyListener());
         passwordEditText.setTypeface(Typeface.DEFAULT);
         passwordConfEditText.setOnKeyListener(getPasswordConfOnKeyListener());
@@ -75,15 +77,31 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
 
     }
 
-   public void voltar(View v) {
-       Intent intent = new Intent(CadastrarUsuarioActivity.this, LoginActivity.class);
-       Snackbar.make(v, getString(R.string.sairUsuarioEdCa), Snackbar.LENGTH_INDEFINITE)
+    Boolean teste = false;
+   public Boolean voltar(View v) {
+
+       Snackbar.make(v,getString(R.string.sairUsuarioEdCa),
+               Snackbar.LENGTH_INDEFINITE)
                .setAction(getString(R.string.ok), new View.OnClickListener() {
                    @Override
                    public void onClick(View view) {
-                       startActivity(intent);
+                       onBackPressed();
+                       teste = true;
                    }
-               }).show();
+               }
+               ).show();
+
+
+       return teste;
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+       if(voltar(getCurrentFocus())) {
+           super.onBackPressed();
+       }
     }
 
     public void salvar(View v) {
@@ -102,6 +120,7 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
         int status = 2;
         String message = "";
 
+
         if (Utils.isValidEmail(email)) {
 
             if(senha.equals(senhaConf)){
@@ -116,7 +135,7 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
 
                 JSONObject json = null;
                 try {
-        RetrieveHttp http = new RetrieveHttp();
+                    RetrieveHttp http = new RetrieveHttp();
                     json = http.execute(
                             getString(R.string.servidor) + "/?",
                                     "POST",
@@ -135,12 +154,20 @@ public class CadastrarUsuarioActivity extends AppCompatActivity {
                     ).get();
                     status = (int) json.get("status");
                     message = (String) json.get("mensagem");
-                  //  Log.d("Cadastro", message);
+
+
                 } catch (ExecutionException | InterruptedException | JSONException e ) {
                     e.printStackTrace();
                 } finally {
                     progressDialog.dismiss();
                 }
+                Snackbar snackbar = Snackbar.make(v, message, Snackbar.LENGTH_LONG);
+                snackbar.show();
+                preferences.edit().putString(getString(R.string.keyDoenca), doenca).apply();
+                preferences.edit().putString(getString(R.string.keyApelido), apelido).apply();
+                preferences.edit().putString(getString(R.string.keyBairro), bairro).apply();
+                preferences.edit().putString(getString(R.string.keyNumero), numero).apply();
+                preferences.edit().putString(getString(R.string.keyNasimento), nascimento).apply();
 
                 preferences.edit().putString(ConfigActivity.PREF_EMAIL, email).apply();
                 preferences.edit().putString(getString(R.string.keyEmail), email).apply();

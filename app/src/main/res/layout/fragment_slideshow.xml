@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margen"
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,31 +23,6 @@
             android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="@dimen/btnQd"
-        android:layout_height="@dimen/btnQd"
-        android:layout_gravity="start"
-        android:adjustViewBounds="true"
-        android:background="@color/white"
-        android:backgroundTint="@color/azul_200"
-        android:contentDescription="@string/voltar"
-        android:focusable="auto"
-        android:focusableInTouchMode="true"
-        android:onClick="voltar"
-        android:rotation="1"
-        android:rotationX="1"
-        android:rotationY="6"
-        android:src="@android:drawable/ic_menu_send"
-        android:tint="@color/white"
-        android:translationZ="10dp"
-        app:backgroundTintMode="src_in"
-        app:borderWidth="10dp"
-        app:fabCustomSize="@dimen/btnQd"
-        app:fabSize="auto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

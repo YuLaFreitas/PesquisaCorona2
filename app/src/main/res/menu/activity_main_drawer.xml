@@ -20,18 +20,4 @@
 
     </group>
 
-
-    <group
-        android:checkableBehavior="single"
-        android:orderInCategory="100"
-        android:menuCategory="system"
-        android:id="@+id/sistema">
-    <item
-            android:orderInCategory="@integer/google_play_services_version"
-            android:menuCategory="system"
-            android:id="@+id/sair"
-            android:icon="@android:drawable/ic_lock_power_off"
-            android:title="@string/sair"
-        tools:targetApi="o" />
-    </group>
 </menu>

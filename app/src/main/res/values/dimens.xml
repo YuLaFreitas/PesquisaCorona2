@@ -8,4 +8,5 @@
     <dimen name="margen">16dp</dimen>
     <dimen name="btnQd">60dp</dimen>
     <dimen name="edtTex">40dp</dimen>
+    <dimen name="texInf">20sp</dimen>
 </resources>

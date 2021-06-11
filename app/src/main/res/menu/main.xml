@@ -6,6 +6,21 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never"
+        android:icon="@android:drawable/ic_dialog_info"
         android:onClick="cadastrar"
         />
+    <group
+        android:checkableBehavior="single"
+        android:orderInCategory="100"
+        android:menuCategory="system"
+        android:id="@+id/sistema">
+        <item
+            android:orderInCategory="@integer/google_play_services_version"
+            android:menuCategory="system"
+            android:id="@+id/sair"
+            android:onClick="sair"
+            android:icon="@android:drawable/ic_lock_power_off"
+            android:title="@string/sair"
+            />
+    </group>
 </menu>
