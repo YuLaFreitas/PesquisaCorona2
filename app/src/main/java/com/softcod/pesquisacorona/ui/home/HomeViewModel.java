@@ -24,16 +24,72 @@ import java.util.concurrent.ExecutionException;
 
 public class HomeViewModel extends ViewModel {
     Intent intent;
-    int mortes;
-    int casos;
-    double latitude = 0.0, longitude = 0.0;
+
     private MutableLiveData<String> mText;
     String[] saida =new String[14];
     RetrieveHttp http;
     JSONObject json = null;
-    int dia;
-    int mes;
-    int ano;
+
+    int mortes;  int casos;
+    double latitude = 0.0, longitude = 0.0;
+    int dia; int mes;  int ano;
+
+    public int getMortes() {
+        return mortes;
+    }
+
+    public void setMortes(int mortes) {
+        this.mortes = mortes;
+    }
+
+    public int getCasos() {
+        return casos;
+    }
+
+    public void setCasos(int casos) {
+        this.casos = casos;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
     public HomeViewModel() {
         intent = new Intent();
         mText = new MutableLiveData<>();
@@ -43,10 +99,10 @@ public class HomeViewModel extends ViewModel {
 
         cal.setTime(data);
 
-        dia = cal.get(Calendar.DAY_OF_MONTH);
-        mes = cal.get(Calendar.MONTH);
-        ano = cal.get(Calendar.YEAR);
-        Log.d("HOJE\n\n\n\n\n", "DATA"+dia+"/"+mes+"/"+ano);
+        setDia(cal.get(Calendar.DAY_OF_MONTH));
+        setMes(cal.get(Calendar.MONTH));
+        setAno(cal.get(Calendar.YEAR));
+        Log.d("HOJE\n\n\n\n\n", "DATA"+getDia()+"/"+getMes()+"/"+getAno());
 
 
         mText.setValue(
@@ -54,16 +110,14 @@ public class HomeViewModel extends ViewModel {
         );
     }
 
-
-
     public void alerta(Context contexto){
-        longitude = intent.getDoubleExtra("longitude", 0.0);
-        latitude = intent.getDoubleExtra("latitude", 0.0);
+        setLongitude(intent.getDoubleExtra("longitude", 0.0));
+        setLatitude(intent.getDoubleExtra("latitude", 0.0));
 
         String dados = "No mês passado tivemos:\n"+ dadosMesPassado();
         dados += ".\n Essa pesquisa foi feita na";
-        dados += "\n latitude:" + latitude + "\ne na longitude" + longitude;
-        dados += ".\n Hoje é: " + dia +"/"+ mes +"/"+ ano;
+        dados += "\n latitude:" + getLongitude() + "\ne na longitude" + getLatitude();
+        dados += ".\n Hoje é: " + getDia() +"/"+ getMes() +"/"+ getAno();
 
         AlertDialog.Builder alerta =new AlertDialog.Builder(contexto);
         TextView textView = new TextView(contexto);
@@ -72,7 +126,8 @@ public class HomeViewModel extends ViewModel {
         alerta.setView(textView);
         alerta.setMessage("Podemos armazenar o histórico de pesquisa?\n");
 
-        alerta.setPositiveButton("SIM", new DialogInterface.OnClickListener(){
+        alerta.setPositiveButton("SIM",
+                new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 registrarConsulta();
@@ -85,8 +140,6 @@ public class HomeViewModel extends ViewModel {
             }
         });
         alerta.show();
-
-
             }
 
     public void registrarConsulta(){
@@ -94,8 +147,13 @@ public class HomeViewModel extends ViewModel {
         JSONObject json = null;
         try {
             json = http.execute(
-                    "http://softcod.com.br/api/teste/modificar.php/?",
-                    "POST", "modificar.php?do=finalizarPesquisa"
+                    "http://softcod.com.br/api/teste/modificar.php?",
+                    "POST", "do=finalizarPesquisa"
+                            +"&data=" + getDia() +"/" + getMes()+"/" + getAno()
+                            +"&casos=" + getCasos()
+                            +"&mortes=" + getMortes()
+                            +"&long=" + getLongitude()
+                            +"&lat=" +getLatitude()
             ).get();
 
             Log.d("JSON____", String.valueOf(json));
@@ -111,12 +169,7 @@ public class HomeViewModel extends ViewModel {
         try {
             json = http.execute(
                     "http://softcod.com.br/api/teste/modificar.php/?",
-                    "POST", "modificar.php?do=criar"
-                            +"&data=" + dia +"/" + mes+"/" + ano
-                            +"&casos=" + casos
-                            +"&mortes=" + mortes
-                            +"&long=" + longitude
-                            +"&lat=" +latitude
+                    "POST", "do=criar"
             ).get();
 
             Log.d("JSON____", String.valueOf(json));
@@ -170,35 +223,6 @@ public class HomeViewModel extends ViewModel {
                 +flutuacao;
     }
 
-    public void setDados(){
-        String zm="", zd = "";
-        if(mes<10){ zm="0"; }
-        if(dia<10){ zd="0"; }
-
-        http = new RetrieveHttp();
-
-        //a pessoa seleciona, envia para a api, e vou colocar outro borão
-        //para ela poder excluir
-        try {
-            json = http.execute(
-                    "http://softcod.com.br/api/teste/"+
-                            "filtros.php/?",
-                    "POST",
-                    "tabela=dados_gerais" +
-                            "&coluna=data" +
-                            "&pesquisa=" + ano +"-"+zm+mes+"-"+zd+dia
-            ).get();
-
-            int quant =json.getInt("q");
-
-            Log.d("Quantidade", "Quantidade de casos:" + quant);
-
-        } catch (NullPointerException | InterruptedException | ExecutionException | JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     public String dadosMesPassado(){
 
         int maxCasos=0, maxMortes = 0;
@@ -206,8 +230,8 @@ public class HomeViewModel extends ViewModel {
         Integer[] mortes = new Integer[30];
         int n=0;
         do{
-            casos[n] = getDado(dia, mes, ano, "casos");
-            mortes[n] = getDado(dia, mes, ano, "mortes");
+            casos[n] = getDado(getDia(), getMes(), getAno(), "casos");
+            mortes[n] = getDado(getDia(), getMes(), getAno(), "mortes");
             n++;
         }while (n<30);
 
@@ -254,8 +278,7 @@ public class HomeViewModel extends ViewModel {
         //para ela poder excluir
         try {
             json = http.execute(
-                    "http://softcod.com.br/api/teste/"+
-                            "filtros.php/?",
+                    "http://softcod.com.br/api/teste/filtrar.php/?",
                     "POST",
                     "tabela=dados_gerais" +
                             "&coluna=data" +
@@ -285,8 +308,7 @@ public class HomeViewModel extends ViewModel {
         //para ela poder excluir
         try {
             json = http.execute(
-                    "http://softcod.com.br/api/teste/"+
-                            "filtros.php/?",
+                    "http://softcod.com.br/api/teste/filtrar.php/?",
                     "POST",
                     "tabela=dados_gerais" +
                             "&coluna=" + coluna +
@@ -294,7 +316,7 @@ public class HomeViewModel extends ViewModel {
             ).get();
 
             int quant =json.getInt("q");
-            Log.d("Quantidade", "Quantidade de casos:" + quant);
+            Log.d("Quantidade", "\nQuantidade de casos: " + quant);
             resultado = quant;
         } catch (NullPointerException | InterruptedException | ExecutionException | JSONException e) {
             return 0;
@@ -303,6 +325,35 @@ public class HomeViewModel extends ViewModel {
 
     }
 
+
+
+    public void setDados(){
+        String zm="", zd = "";
+        if(mes<10){ zm="0"; }
+        if(dia<10){ zd="0"; }
+
+        http = new RetrieveHttp();
+
+        //a pessoa seleciona, envia para a api, e vou colocar outro borão
+        //para ela poder excluir
+        try {
+            json = http.execute(
+                    "http://softcod.com.br/api/teste/filtrar.php/?",
+                    "POST",
+                    "tabela=dados_gerais" +
+                            "&coluna=data" +
+                            "&pesquisa=" + ano +"-"+zm+mes+"-"+zd+dia
+            ).get();
+
+            int quant =json.getInt("q");
+
+            Log.d("Quantidade", "Quantidade de casos:" + quant);
+
+        } catch (NullPointerException | InterruptedException | ExecutionException | JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public LiveData<String> getText() {
         return mText;
