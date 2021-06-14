@@ -20,8 +20,6 @@ import com.softcod.pesquisacorona.utils.Utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.concurrent.ExecutionException;
-
 public class ResetPasswordActivity extends AppCompatActivity {
 
     private EditText emailEditText;
@@ -77,18 +75,19 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
             RetrieveHttp http = new RetrieveHttp();
             JSONObject json = null;
-            try {
-                json = http.execute(getString(R.string.servidor)+
-                                "/recuperar_senha",
-                        "POST", "email=" + email).get();
+            /*try {
+                json = http.execute(getString(R.string.servidor)+"teste?"
+                        //        "/recuperar_senha"
+                        ,
+                        "POST", "do=pegar&dti=2021-03-02").get();
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             } finally {
                 progressDialog.dismiss();
-            }
+            }*/
 
             try {
-                message = (String) json.get("message");
+                message = (String) json.get("q");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

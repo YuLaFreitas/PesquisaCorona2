@@ -26,16 +26,16 @@ public class RetrieveHttp extends AsyncTask<String, Void, JSONObject> {
         try{
             URL url = new URL(strings[0]);
             HttpURLConnection client = null;
+
             String urlParameters = strings[2];
             Log.d("URL", "AQUI>>>>>>" + strings[0]);
             byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
             client = (HttpURLConnection) url.openConnection();
             client.setRequestMethod(strings[1]);
-            client.setRequestProperty("Content-Type",
-                    "application/x-www-form-urlencoded");
+            client.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            //client.setRequestProperty("X-HTTP-Method-Override", "PATCH");
             client.setDoOutput(true);
-            try (DataOutputStream wr =
-                         new DataOutputStream(client.getOutputStream())) {
+            try (DataOutputStream wr = new DataOutputStream(client.getOutputStream())) {
                 wr.write(postData);
             }
             StringBuilder content;

@@ -28,6 +28,15 @@
                 android:textSize="@dimen/texInf"
                 />
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/inserirData"
+                android:contentDescription="@string/salvar"
+                android:layout_width="@dimen/btnQd"
+                android:layout_height="@dimen/btnQd"
+                android:src="@android:drawable/ic_menu_my_calendar"
+                tools:layout_editor_absoluteX="320dp"
+                tools:layout_editor_absoluteY="671dp" />
+
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
