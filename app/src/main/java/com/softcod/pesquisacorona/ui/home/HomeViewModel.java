@@ -246,8 +246,8 @@ public class HomeViewModel extends ViewModel {
                 maxMortes = mortes[i];
             }
         }
-        this.mortes = maxMortes;
-        this.casos = maxCasos;
+        setMortes(maxMortes);
+        setCasos(maxCasos);
         return "Casos: " + maxCasos + ", \nmortes: " + maxMortes +
                 ", \ndados extraidos no dia: " + dia +"/"+mes +"/"+ano;
 
