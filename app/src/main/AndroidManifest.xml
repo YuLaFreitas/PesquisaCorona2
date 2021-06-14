@@ -5,8 +5,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="false"
@@ -45,9 +44,7 @@
         <activity android:name=".utils.TelaApresentacao"/>
         <activity android:name=".CadastrarUsuarioActivity"/>
 
-
-
-        <service
+        <!--service
             android:name=".utils.MyFirebaseMessagingService"
             android:permission="com.google.android.c2dm.permission.SEND"
             android:exported="false">
@@ -55,16 +52,12 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
-        </service>
-        <meta-data
+        </service-->
+        <!--meta-data
             android:name="com.google.firebase.messaging.DisplayNotification"
             android:resource="@android:drawable/star_big_off"
-            />
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-        <meta-data android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            /-->
+
 
     </application>
 

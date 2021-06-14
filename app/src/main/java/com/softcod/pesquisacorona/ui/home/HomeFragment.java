@@ -1,42 +1,51 @@
 package com.softcod.pesquisacorona.ui.home;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Build;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.softcod.pesquisacorona.R;
 import com.softcod.pesquisacorona.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    HomeViewModel hvm;
+    View v;
+    ProgressDialog pd;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        pd = new ProgressDialog(this.getContext());
+        pd.setTitle("Um momento");
+        pd.setMessage("Estamos colhendo os dados.");
+        pd.setCancelable(true);
+        pd.setIndeterminate(true);
+        pd.setIcon(android.R.drawable.ic_dialog_info);
+        pd.show();
+
         HomeViewModel homeViewModel = new ViewModelProvider(this)
                 .get(HomeViewModel.class);
-
+        v = getView();
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
         final TextView textView = binding.lista;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+        homeViewModel.getText().observe(getViewLifecycleOwner(),
+                new Observer<String>() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(@Nullable String s) {
@@ -45,42 +54,21 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-        FloatingActionButton floatingActionButton = binding.getRoot().findViewById(R.id.inserirData);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showAlert();
-            }
-        });
+        hvm = new HomeViewModel();
         return root;
     }
 
-    private void showAlert() {
-        CalendarView calendario = new CalendarView(getContext());
-        final AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-        dialog.setTitle("Liberar localização")
-                .setMessage("Preciso da sua localização, queira verificar.")
-                .setPositiveButton("Configurar localizacao", new DialogInterface.OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.N)
-                    @Override
-                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                        calendario.showContextMenu(100,100);
+    @Override
+    public void onStart() {
+        super.onStart();
+        pd.dismiss();
+    }
 
-                        //Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+    @Override
+    public void onResume() {
+        super.onResume();
 
-                        //startActivity(myIntent);
-                    }
-                })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                    }
-                });
-        dialog.create().setView(calendario);
-
-        dialog.show();
+        hvm.alerta(this.getContext());
     }
 
     @Override

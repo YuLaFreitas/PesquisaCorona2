@@ -1,8 +1,14 @@
 package com.softcod.pesquisacorona.ui.home;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
+import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -17,7 +23,10 @@ import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 public class HomeViewModel extends ViewModel {
-
+    Intent intent;
+    int mortes;
+    int casos;
+    double latitude = 0.0, longitude = 0.0;
     private MutableLiveData<String> mText;
     String[] saida =new String[14];
     RetrieveHttp http;
@@ -26,6 +35,7 @@ public class HomeViewModel extends ViewModel {
     int mes;
     int ano;
     public HomeViewModel() {
+        intent = new Intent();
         mText = new MutableLiveData<>();
 
         Date data = new Date();
@@ -38,23 +48,83 @@ public class HomeViewModel extends ViewModel {
         ano = cal.get(Calendar.YEAR);
         Log.d("HOJE\n\n\n\n\n", "DATA"+dia+"/"+mes+"/"+ano);
 
+
         mText.setValue(
                 calculeMediaMovel(dia,mes,ano)
         );
-
-
     }
 
 
-    public void modificar(long data){
-        mText = new MutableLiveData<>();
-        /*
-        mText.setValue(
-             //   calculeMediaMovel(dia,mes,ano)
-        );*/
-    }
-    public void carregarBanco(){
 
+    public void alerta(Context contexto){
+        longitude = intent.getDoubleExtra("longitude", 0.0);
+        latitude = intent.getDoubleExtra("latitude", 0.0);
+
+        String dados = "No mês passado tivemos:\n"+ dadosMesPassado();
+        dados += ".\n Essa pesquisa foi feita na";
+        dados += "\n latitude:" + latitude + "\ne na longitude" + longitude;
+        dados += ".\n Hoje é: " + dia +"/"+ mes +"/"+ ano;
+
+        AlertDialog.Builder alerta =new AlertDialog.Builder(contexto);
+        TextView textView = new TextView(contexto);
+        textView.setText(dados);
+        textView.setTextColor(Color.RED);
+        alerta.setView(textView);
+        alerta.setMessage("Podemos armazenar o histórico de pesquisa?\n");
+
+        alerta.setPositiveButton("SIM", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                registrarConsulta();
+            }
+        });
+        alerta.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                dialog.dismiss();
+            }
+        });
+        alerta.show();
+
+
+            }
+
+    public void registrarConsulta(){
+        RetrieveHttp http = new RetrieveHttp();
+        JSONObject json = null;
+        try {
+            json = http.execute(
+                    "http://softcod.com.br/api/teste/modificar.php/?",
+                    "POST", "modificar.php?do=finalizarPesquisa"
+            ).get();
+
+            Log.d("JSON____", String.valueOf(json));
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            Log.d("JSON____", String.valueOf(json));
+        }
+    }
+    public void carregarBanco() {
+        RetrieveHttp http = new RetrieveHttp();
+        JSONObject json = null;
+        try {
+            json = http.execute(
+                    "http://softcod.com.br/api/teste/modificar.php/?",
+                    "POST", "modificar.php?do=criar"
+                            +"&data=" + dia +"/" + mes+"/" + ano
+                            +"&casos=" + casos
+                            +"&mortes=" + mortes
+                            +"&long=" + longitude
+                            +"&lat=" +latitude
+            ).get();
+
+            Log.d("JSON____", String.valueOf(json));
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            Log.d("JSON____", String.valueOf(json));
+        }
     }
 
     public String calculeMediaMovel(int dia, int mes, int ano){
@@ -111,7 +181,7 @@ public class HomeViewModel extends ViewModel {
         //para ela poder excluir
         try {
             json = http.execute(
-                    "http://softcod.com.br/api/"+
+                    "http://softcod.com.br/api/teste/"+
                             "filtros.php/?",
                     "POST",
                     "tabela=dados_gerais" +
@@ -152,7 +222,8 @@ public class HomeViewModel extends ViewModel {
                 maxMortes = mortes[i];
             }
         }
-
+        this.mortes = maxMortes;
+        this.casos = maxCasos;
         return "Casos: " + maxCasos + ", \nmortes: " + maxMortes +
                 ", \ndados extraidos no dia: " + dia +"/"+mes +"/"+ano;
 
@@ -183,7 +254,7 @@ public class HomeViewModel extends ViewModel {
         //para ela poder excluir
         try {
             json = http.execute(
-                    "http://softcod.com.br/api/"+
+                    "http://softcod.com.br/api/teste/"+
                             "filtros.php/?",
                     "POST",
                     "tabela=dados_gerais" +
@@ -214,7 +285,7 @@ public class HomeViewModel extends ViewModel {
         //para ela poder excluir
         try {
             json = http.execute(
-                    "http://softcod.com.br/api/"+
+                    "http://softcod.com.br/api/teste/"+
                             "filtros.php/?",
                     "POST",
                     "tabela=dados_gerais" +

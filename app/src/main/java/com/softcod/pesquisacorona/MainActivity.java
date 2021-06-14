@@ -25,38 +25,24 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.softcod.pesquisacorona.controller.ConfigActivity;
 import com.softcod.pesquisacorona.databinding.ActivityMainBinding;
-import com.softcod.pesquisacorona.utils.Gps;
+import com.softcod.pesquisacorona.ui.home.HomeViewModel;
 
 public class MainActivity extends AppCompatActivity {
-    LocationManager locationManager;
-    Location location;
+    private Location location;
+    private LocationManager locationManager;
+    Intent intent;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    Double latitude =0.0, longitude = 0.0;
+    HomeViewModel hvm;
+    double latitude = 0.0, longitude = 0.0;
     SharedPreferences preferences;
+    SharedPreferences start = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED
-        ) {
-
-
-        }else {
-            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            location =
-                    locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
-
-            Gps gps = new Gps(this);
-            longitude = gps.getLon();
-            latitude = gps.getLat();
-
-
-
-        Log.d("\n\n\n\nlocation\n\n\n\n", "Lat"+longitude + "lon" + longitude);
+        start = getSharedPreferences("execultado", MODE_PRIVATE);
+        intent = new Intent(this, HomeViewModel.class);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -84,21 +70,63 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(
                 navigationView, navController);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(start.getBoolean("execultado", true)){
+            start.edit().putBoolean("execultado", false).apply();
+        }else{
+            hvm = new HomeViewModel();
+            hvm.carregarBanco();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            Log.d("\n\n\n\nPERMISSÃO\n\n\n\n", "Sem pemissão??");
+
+        } else {
+            locationManager = (LocationManager)
+                    getSystemService(Context.LOCATION_SERVICE);
+            location =
+             locationManager
+                            .getLastKnownLocation(LocationManager
+                                    .GPS_PROVIDER);        }
+        if(location !=null){
+            longitude = location.getLongitude();
+            latitude = location.getLatitude();
+            Log.d("\n\n\n\nlocation\n\n\n\n",
+                    "Lat" + longitude +
+                            "lon" + longitude);
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
+
+        }else{
+            Log.e("\n\n\n\nlocation\n\n\n\n", "Erro");
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);}
+
 
     }
 
-
-        @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-            // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-            TextView textView = findViewById(R.id.cidadao);
-            textView.setText(preferences.getString(
-                    ConfigActivity.CONT_NOME, ""));
+        TextView textView = findViewById(R.id.cidadao);
+        textView.setText(preferences.getString(
+                ConfigActivity.CONT_NOME, ""));
 
 
-            return true;
+        return true;
     }
 
     @Override
@@ -113,18 +141,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void cadastrar(MenuItem item) {
-         Intent cadastro = new Intent(this,
-                 CadastrarUsuarioActivity.class);
-            startActivity(cadastro);
-        }
+        Intent cadastro = new Intent(this,
+                CadastrarUsuarioActivity.class);
+        startActivity(cadastro);
+    }
 
-   public void sair(MenuItem item){
+    public void sair(MenuItem item) {
         Intent home = new Intent(this, LoginActivity.class);
+        startActivity(home);
+    }
 
-
-       startActivity(home);
-
-
-   }
 
 }
