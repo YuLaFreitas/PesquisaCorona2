@@ -27,13 +27,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        pd = new ProgressDialog(this.getContext());
-        pd.setTitle("Um momento");
-        pd.setMessage("Estamos colhendo os dados.");
-        pd.setCancelable(true);
-        pd.setIndeterminate(true);
-        pd.setIcon(android.R.drawable.ic_dialog_info);
-        pd.show();
+
 
         HomeViewModel homeViewModel = new ViewModelProvider(this)
                 .get(HomeViewModel.class);
@@ -61,14 +55,23 @@ public class HomeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        pd.dismiss();
+        pd = new ProgressDialog(this.getContext());
+        pd.setTitle("Um momento");
+        pd.setMessage("Estamos colhendo os dados.");
+        pd.setCancelable(true);
+        pd.setIndeterminate(true);
+        pd.setIcon(android.R.drawable.ic_dialog_info);
+        pd.show();
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        hvm.alerta(this.getContext());
+        pd.dismiss();
+
+
     }
 
     @Override
