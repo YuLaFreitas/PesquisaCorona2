@@ -1,24 +1,15 @@
 package com.softcod.pesquisacorona.utils;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.RingtoneManager;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
 import androidx.annotation.RequiresApi;
-import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
-import com.softcod.pesquisacorona.MainActivity;
 import com.softcod.pesquisacorona.R;
 
 import java.text.SimpleDateFormat;
@@ -27,8 +18,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService{
 
@@ -43,10 +32,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
         prefs = PreferenceManager
                 .getDefaultSharedPreferences(getApplicationContext());
 
-        Map<String, String> data = remoteMessage.getData();
+     //   Map<String, String> data = remoteMessage.getData();
        // Log.d(TAG, "onMessageReceived>>"+data.toString());
         //id da parada
-        if (data.containsKey("id")
+     /*  if (data.containsKey("id")
                 && data.containsKey("type")
                 && data.containsKey("description")) {
            // Log.i(TAG, "onMessageReceived: data valid");
@@ -95,7 +84,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
             saveNotifications(list, alerta);
 
             Log.d(TAG, "onMessageReceived: notification saved!");
-        }
+        }*/
     }
 
     public int createID(){
@@ -134,7 +123,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
     }
 
 
-    @Override
+    /*@Override
     public void onNewToken(String token) {
         Log.d(TAG, "Refreshed token: " + token);
         sendRegistrationToServer(token);
@@ -157,5 +146,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService{
             e.printStackTrace();
         }
         //System.out.println("Class FireMsng\n" + json);
-    }
+    }*/
 }
