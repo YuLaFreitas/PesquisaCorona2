@@ -29,7 +29,7 @@ public class HomeViewModel extends ViewModel {
     double latitude = 0.0, longitude = 0.0;
     int dia; int mes;  int ano;
 
-     Integer[][] dados = new Integer[186][2];
+     Integer[][] dados = new Integer[200][2];
 
 
     public HomeViewModel() {
@@ -47,7 +47,6 @@ public class HomeViewModel extends ViewModel {
         getDadoArray(getDia(),getMes(),getAno());
 
         Log.d("HOJE\n\n\n\n\n", "DATA"+getDia()+"/"+getMes()+"/"+getAno());
-
 
         mText.setValue(
                 calculeMediaMovel(getDia(),getMes(),getAno())
@@ -95,7 +94,7 @@ public class HomeViewModel extends ViewModel {
 
     public String calculeMediaMovel(int dia, int mes, int ano){
 
-        int i= 0;
+        int i = 0;
         int r1 = 0, r2 = 0;
         int m = 14;
 
@@ -128,8 +127,8 @@ public class HomeViewModel extends ViewModel {
         int semOco2 = m1/7;
         int semMor2 = m2/7;
 
-        int flutuacao =(semOco2-semOco1);
-        int obitos =(semMor2-semMor1);
+        int flutuacao =(semOco1-semOco2);
+        int obitos =(semMor1-semMor2);
 
         return "Durante a 1ª semana:\n"+
                 saida[0] +saida[1] +saida[2] +saida[3] +
@@ -216,53 +215,64 @@ public class HomeViewModel extends ViewModel {
         return json;
 
     }*/
+    int i = 180;
 
     @SuppressLint("RestrictedApi")
-    public void getDadoArray(int dia, int mes, int ano){
+    private boolean getDadoArray(int dia, int mes, int ano){
+        int c = 0;
         String zm="", zd = "";
-        int i = 0;
 
-        //CONTOLAR A QUANTIDADE (6 MESES 186 COM MARGEM)
+        int d = dia;
+        int m = mes;
+        int a = ano;
+
+        //CONTROLAR A QUANTIDADE (6 MESES 186 COM MARGEM)
         do{
             //CONTROLAR O ANO
 
             do {
                 //CONTOLAR O MES
-                if(mes<10){ zm="0"; }else{zm="";}
+                if(m<10){ zm="0"; }else{zm="";}
                    do {
-                       if(dia<10){ zd="0"; }else {zd ="";}
+                       if(d<10){ zd="0"; }else {zd ="";}
                     http = new RetrieveHttp();
 
-                    //a pessoa seleciona, envia para a api, e vou colocar outro borão
-                    //para ela poder excluir
-
-                    try {
+                   try {
                         json = http.execute(
                                 "http://softcod.com.br/api/teste/filtrar.php/?",
                                 "POST",
                                 "tabela=dados_gerais" +
                                         "&coluna=data" +
-                                        "&pesquisa=" + ano + "-" + zm + mes + "-" + zd + dia
+                                        "&pesquisa=" + a + "-" + zm + m + "-" + zd + d
                         ).get();
 
-                        dados[i][0] = json.getInt("q");
-                        dados[i][1] = json.getInt("m");
-                        Log.d("Quantidade", "\n\n\n\nQuantidade de casos: " +json.getInt("q"));
+                        dados[c][0] = Math.max(json.getInt("q"), 0);
+                        dados[c][1] = Math.max(json.getInt("m"), 0);
+
+                        Log.d("Quantidade", "\n\n\n\nQuantidade de casos: "
+                                +json.getInt("q"));
 
                     } catch (NullPointerException | InterruptedException | ExecutionException | JSONException e) {
                         e.printStackTrace();
                     }
-                    i++;
-                    dia--;
-                } while (dia > 1);
-                dia = quantosDiasMes(mes, ano);
-                mes--;
+                       c++;i--;d--;
 
-            } while (mes >= 1 && mes <= quantosDiasMes(mes, ano) );
-            mes = 12;
-            ano--;
-        }while (i >=  186);
+                       Log.d("\n\n\n\nContagem DIA", "VALOR: "+i);
+                } while (d != 1);
 
+                m--;
+                if(m!=0){
+                    d = quantosDiasMes(m, a);
+                }
+                Log.d("\n\n\n\nContagem MES", "VALOR: "+i);
+            } while (m != 1);
+            a--;
+            d = 31;
+            m = 12;
+            Log.d("\n\n\n\nContagem ANO", "VALOR: "+i);
+        }while (c <=  0);
+
+        return true;
     }
 
     public void setDados(){
